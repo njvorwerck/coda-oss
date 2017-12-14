@@ -103,20 +103,43 @@ def build(bld):
         # get compression to work, not decompression.
         minizipDir = os.path.join('contrib', 'minizip')
         minizipIncludes = ['.', minizipDir]
-        minizip = bld(features='c c%s add_targets' % env['LIB_TYPE'] or 'stlib',
+        zlibTargetPath = bld.path.get_bld().abspath()
+        features = 'c cstlib add_targets'
+        if env['LIB_TYPE'] == 'shlib':
+            features += ' cshlib'
+        minizip = bld(features='c cstlib add_targets',
                       includes=minizipIncludes,
                       export_includes=minizipIncludes,
                       target='minizip',
                       source=[os.path.join(minizipDir, 'ioapi.c'),
                               os.path.join(minizipDir, 'zip.c')],
                       path=driverNode,
-                      lib='z',
-                      libpath=os.path.join(os.getcwd(), env['install_libdir']),
+                      defines=defs,
+                      env=env.derive(),
+                      #lib='z',
+                      #libpath=[os.path.join(zlibTargetPath,
+                      #                      os.listdir(zlibTargetPath)[0])],
                       name='MINIZIP',
                       targets_to_add=[])
-
+        minizip = bld(features='c cshlib add_targets',
+                      includes=minizipIncludes,
+                      export_includes=minizipIncludes,
+                      target='minizip',
+                      source=[os.path.join(minizipDir, 'ioapi.c'),
+                              os.path.join(minizipDir, 'zip.c')],
+                      path=driverNode,
+                      defines=defs,
+                      env=env.derive(),
+                      lib='z',
+                      libpath=[os.path.join(zlibTargetPath,
+                                            os.listdir(zlibTargetPath)[0])],
+                      name='MINIZIP',
+                      targets_to_add=[])
+        print(bld.path.get_bld().abspath())
+        # sys.exit()
         # combine the two into a single target
         zlib.targets_to_add.append('MINIZIP')
+        # zlib.targets_to_add.append('MINIZIPSH')
 
         if env['install_libs']:
             zlib.install_path = env['install_libdir']

@@ -214,11 +214,17 @@ class CPPContext(Context.Context):
         glob_patterns = self._extendGlobPatterns(glob_patterns, modArgs)
 
         # Build the lib
-        lib = bld(features='%s %s%s add_targets includes'% (libExeType, libExeType, env['LIB_TYPE'] or 'stlib'), includes=includes,
+        lib = bld(features='%s %sstlib add_targets includes'% (libExeType, libExeType), includes=includes,
                 target=targetName, name=libName, export_includes=exportIncludes,
                 use=uselib_local, uselib=uselib, env=env.derive(),
                 defines=defines, path=path,
                 source=path.ant_glob(glob_patterns), targets_to_add=targetsToAdd)
+        if env['LIB_TYPE'] == 'shlib':
+            lib = bld(features='%s %sshlib add_targets includes'% (libExeType, libExeType), includes=includes,
+                    target=targetName, name=libName, export_includes=exportIncludes,
+                    use=uselib_local, uselib=uselib, env=env.derive(),
+                    defines=defines, path=path,
+                    source=path.ant_glob(glob_patterns), targets_to_add=targetsToAdd)
         lib.source = list(filter(partial(lambda x, t: basename(str(t)) not in x, modArgs.get('source_filter', '').split()), lib.source))
 
         if env['install_libs']:
