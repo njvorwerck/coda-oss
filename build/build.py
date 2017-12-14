@@ -24,6 +24,31 @@ from package import package
 COMMON_EXCLUDES = '.bzr .bzrignore .git .gitignore .svn CVS .cvsignore .arch-ids {arch} SCCS BitKeeper .hg _MTN _darcs Makefile Makefile.in config.log'.split()
 COMMON_EXCLUDES_EXT ='~ .rej .orig .pyc .pyo .bak .tar.bz2 tar.gz .zip .swp'.split()
 
+class AssignableNone(object):
+    '''This is a stand-in for None, except you can assign to it without throwing
+    '''
+    def __init__(self):
+        pass
+
+    def __setattr__(self, name, value):
+        pass
+
+    '''
+    def __getattr__(self, name):
+        return AssignableNone()
+
+    def __call__(self, *args, **kwargs):
+        return AssignableNone()
+    '''
+
+    def __nonzero__(self):
+        return False
+
+    def __bool__(self):
+        # Python3 compatability
+        return False
+
+
 # ignore files ending in these extensions
 for ext in COMMON_EXCLUDES_EXT:
     TaskGen.extension(ext)(Utils.nada)
@@ -219,24 +244,36 @@ class CPPContext(Context.Context):
                 use=uselib_local, uselib=uselib, env=env.derive(),
                 defines=defines, path=path,
                 source=path.ant_glob(glob_patterns), targets_to_add=targetsToAdd)
-        if env['LIB_TYPE'] == 'shlib':
-            lib = bld(features='%s %sshlib add_targets includes'% (libExeType, libExeType), includes=includes,
-                    target=targetName, name=libName, export_includes=exportIncludes,
-                    use=uselib_local, uselib=uselib, env=env.derive(),
-                    defines=defines, path=path,
-                    source=path.ant_glob(glob_patterns), targets_to_add=targetsToAdd)
         lib.source = list(filter(partial(lambda x, t: basename(str(t)) not in x, modArgs.get('source_filter', '').split()), lib.source))
+
+        lib_shared = AssignableNone()
+        if env['LIB_TYPE'] == 'shlib':
+            lib_shared = bld(features='%s %sshlib add_targets includes'% (libExeType, libExeType), includes=includes,
+                             target=targetName, name=libName, export_includes=exportIncludes,
+                             use=uselib_local, uselib=uselib, env=env.derive(),
+                             defines=defines, path=path,
+                             source=path.ant_glob(glob_patterns), targets_to_add=targetsToAdd)
+            lib_shared.source = lib.source
 
         if env['install_libs']:
             lib.install_path = installPath or env['install_libdir']
+            lib_shared.install_path = installPath or env['install_libdir']
 
         if not lib.source:
             lib.features = 'add_targets includes'
+            lib_shared = AssignableNone()
 
         pattern = env['%s%s_PATTERN' % (libExeType, env['LIB_TYPE'] or 'stlib')]
         if libVersion is not None and sys.platform != 'win32' and Options.options.symlinks and env['install_libs'] and lib.source:
             symlinkLoc = '%s/%s' % (lib.install_path, pattern % libName)
             lib.targets_to_add.append(bld(features='symlink_as_tgt', dest=symlinkLoc, src=pattern % lib.target, name='%s-symlink' % libName))
+            '''
+            lib_shared.targets_to_add.append(bld(features='symlink_as_tgt',
+                                                 dest=symlinkLoc,
+                                                 src=pattern % lib_shared.target,
+                                                 name='%s-symlink' % libName))
+            '''
+
 
         if env['install_headers']:
             lib.targets_to_add.append(bld(features='install_tgt', pattern='**/*',

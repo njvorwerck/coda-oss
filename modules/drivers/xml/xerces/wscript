@@ -2,7 +2,7 @@ import os, sys
 from os.path import join, exists
 from waflib import Options, Utils
 from waflib.TaskGen import feature, before, task_gen
-from build import untarFile, writeConfig
+from build import untarFile, writeConfig, AssignableNone
 
 SOURCE         = 'xerces-c-3.1.1'
 XERCES_USELIBS = 'THREAD SOCKET'
@@ -294,7 +294,6 @@ def build(bld):
         sources = ' '.join(sources)
 
         # build the library
-        libType = env['LIB_TYPE'] or 'stlib'
         xercesDefines = env['DEFINES'] + ['HAVE_CONFIG_H']
         xerces = bld(features='c cstlib add_targets',
                      source=sources,
@@ -303,20 +302,22 @@ def build(bld):
                      uselib=xercesUselibs, name='XML', env=env.derive(),
                      defines=xercesDefines,
                      targets_to_add=[])
+        xerces_shared = AssignableNone()
 
         if env['LIB_TYPE'] == 'shlib':
-            xerces = bld(features='c cshlib add_targets',
-                     source=sources,
-                     includes=['.', 'src'], export_includes=['src'],
-                     target='xerces-c', path=xercesNode,
-                     uselib=xercesUselibs, name='XML', env=env.derive(),
-                     defines=xercesDefines,
-                     targets_to_add=[])
-        if libType == 'stlib':
-            xerces.export_defines='XERCES_STATIC_LIBRARY'
+            xerces_shared = bld(features='c cshlib add_targets',
+                                source=sources,
+                                includes=['.', 'src'], export_includes=['src'],
+                                target='xerces-c', path=xercesNode,
+                                uselib=xercesUselibs, name='XML_SHARED',
+                                env=env.derive(),
+                                defines=xercesDefines,
+                                targets_to_add=[])
+        xerces.export_defines = 'XERCES_STATIC_LIBRARY'
 
         if env['install_libs']:
             xerces.install_path = env['install_libdir']
+            xerces_shared.install_path = env['install_libdir']
 
 
         # install header target if necessary

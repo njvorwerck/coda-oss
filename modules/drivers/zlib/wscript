@@ -1,9 +1,10 @@
 import os
 from waflib import Options
 from waflib.TaskGen import feature, before, task_gen
-from build import untarFile
+from build import untarFile, AssignableNone
 
-ZLIB_VERSION = 'zlib-1.2.7'
+sourcepath = 'zlib-1.2.7'
+tarfile = 'zlib-1.2.7.tar'
 
 def options(opt):
     opt.add_option('--with-zip-home', action='store', dest='zip_home',
@@ -14,7 +15,7 @@ def options(opt):
                    default=True, help='will build the zip (libz) library if not found on the system (default)')
     opt.add_option('--build-zip', action='store_true', dest="build_zip",
                    help='force building zip (zlib) library from scratch',
-                   default=os.path.exists(os.path.join(opt.path.abspath(), ZLIB_VERSION + '.tar')))
+                   default=os.path.exists(os.path.join(opt.path.abspath(), tarfile)))
     opt.add_option('--nobuild-zip', action='store_false', dest="build_zip",
                    help='force not building zip (zlib) library from scratch')
 
@@ -44,14 +45,14 @@ def configure(conf):
 
         elif Options.options.build_zip:
             # Build is off by default when tarfile not found, fail if forced on
-            if not os.path.exists(os.path.join(conf.path.abspath(), ZLIB_VERSION + '.tar')):
+            if not os.path.exists(os.path.join(conf.path.abspath(), tarfile)):
                 conf.fatal('Missing zlib tarfile')
 
             conf.env['MAKE_ZIP'] = True
             conf.env['MAKE_MINIZIP'] = True
             conf.msg('Building local lib', 'zip (zlib)')
 
-            untarFile(path=conf.path, fname=ZLIB_VERSION + '.tar')
+            untarFile(path=conf.path, fname=tarfile)
 
         else:
             if conf.check(lib='z', uselib_store='ZIP',
@@ -73,7 +74,7 @@ def build(bld):
     driversNode = bld.path
 
     if 'MAKE_ZIP' in env:
-        fname = ZLIB_VERSION
+        fname = sourcepath
 
         driverNode = driversNode.make_node(fname)
 
@@ -103,10 +104,6 @@ def build(bld):
         # get compression to work, not decompression.
         minizipDir = os.path.join('contrib', 'minizip')
         minizipIncludes = ['.', minizipDir]
-        zlibTargetPath = bld.path.get_bld().abspath()
-        features = 'c cstlib add_targets'
-        if env['LIB_TYPE'] == 'shlib':
-            features += ' cshlib'
         minizip = bld(features='c cstlib add_targets',
                       includes=minizipIncludes,
                       export_includes=minizipIncludes,
@@ -116,34 +113,35 @@ def build(bld):
                       path=driverNode,
                       defines=defs,
                       env=env.derive(),
-                      #lib='z',
-                      #libpath=[os.path.join(zlibTargetPath,
-                      #                      os.listdir(zlibTargetPath)[0])],
                       name='MINIZIP',
                       targets_to_add=[])
-        minizip = bld(features='c cshlib add_targets',
-                      includes=minizipIncludes,
-                      export_includes=minizipIncludes,
-                      target='minizip',
-                      source=[os.path.join(minizipDir, 'ioapi.c'),
-                              os.path.join(minizipDir, 'zip.c')],
-                      path=driverNode,
-                      defines=defs,
-                      env=env.derive(),
-                      lib='z',
-                      libpath=[os.path.join(zlibTargetPath,
-                                            os.listdir(zlibTargetPath)[0])],
-                      name='MINIZIP',
-                      targets_to_add=[])
-        print(bld.path.get_bld().abspath())
-        # sys.exit()
+
+        minizip_shared = AssignableNone()
+        if env['LIB_TYPE'] == 'shlib':
+            zlibTargetPath = bld.path.get_bld().abspath()
+            minizip_shared = bld(features='c cshlib add_targets',
+                                 includes=minizipIncludes,
+                                 export_includes=minizipIncludes,
+                                 target='minizip',
+                                 source=[os.path.join(minizipDir, 'ioapi.c'),
+                                         os.path.join(minizipDir, 'zip.c')],
+                                 path=driverNode,
+                                 defines=defs,
+                                 env=env.derive(),
+                                 lib='z',
+                                 libpath=[os.path.join(zlibTargetPath, sourcepath)],
+                                 name='MINIZIP_SHARED',
+                                 targets_to_add=[])
+
         # combine the two into a single target
         zlib.targets_to_add.append('MINIZIP')
-        # zlib.targets_to_add.append('MINIZIPSH')
+        if minizip_shared:
+            zlib.targets_to_add.append('MINIZIP_SHARED')
 
         if env['install_libs']:
             zlib.install_path = env['install_libdir']
             minizip.install_path = env['install_libdir']
+            minizip_shared.install_path = env['install_libdir']
 
         if env['install_headers']:
             bld(features='install_tgt', install_path=env['install_includedir'],
@@ -173,12 +171,13 @@ def build(bld):
                 name='MINIZIP_SOURCE_INSTALL')
             minizip.targets_to_add.append('MINIZIP_SOURCE_INSTALL')
 
+
 def distclean(context):
     #remove the untarred directories
     import shutil
 
     dirs = map(lambda d: os.path.join(context.path.abspath(), d),
-               [ZLIB_VERSION])
+               [sourcepath])
     for d in dirs:
         try:
             if os.path.exists(d):
