@@ -114,8 +114,8 @@ def build(bld):
                    'rdcolmap.c', 'rdgif.c',    'rdppm.c',    'rdrle.c',    
                    'rdswitch.c', 'rdtarga.c',  'transupp.c', 'wrbmp.c',    
                    'wrgif.c',    'wrppm.c',    'wrrle.c',    'wrtarga.c')
-        
-        jpeglib = bld(features='c c%s add_targets' % env['LIB_TYPE'] or 'stlib',
+
+        jpeglib = bld(features='c cstlib add_targets',
                       includes=['.'],
                       export_includes=['.'],
                       target='libjpeg',
@@ -123,10 +123,27 @@ def build(bld):
                       path=driverNode,
                       defines=env['DEFINES'],
                       uselib='SOCKET',
+                      shlib='z',
+                      shlibpath=os.path.join(os.getcwd(), env['install_libdir']),
                       env=env.derive(),
                       name='JPEG',
                       targets_to_add=[])
-        
+        if env['LIB_TYPE'] == 'shlib':
+            jpeglib.targets_to_add.append(
+                bld(features='c cshlib add_targets',
+                      includes=['.'],
+                      export_includes=['.'],
+                      target='libjpeg',
+                      source=sources,
+                      path=driverNode,
+                      defines=env['DEFINES'],
+                      uselib='SOCKET',
+                      shlib='z',
+                      shlibpath=os.path.join(os.getcwd(), env['install_libdir']),
+                      env=env.derive(),
+                      name='JPEG_SHARED',
+                      targets_to_add=[]))
+
         if env['install_libs']:
             jpeglib.install_path = env['install_libdir']
         

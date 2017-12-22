@@ -81,7 +81,7 @@ def build(bld):
         if env['CC_NAME'] == 'msvc' and env['LIB_TYPE'] == 'shlib':
             defs += ['ZLIB_DLL']
 
-        zlib = bld(features='c c%s add_targets' % env['LIB_TYPE'] or 'stlib',
+        zlib = bld(features='c cstlib add_targets',
                    includes=['.'],
                    export_includes='.',
                    target='z',
@@ -92,6 +92,20 @@ def build(bld):
                    env=env.derive(),
                    name='ZIP',
                    targets_to_add=[])
+    
+        if env['LIB_TYPE'] == 'shlib':
+            zlib.targets_to_add.append(
+                bld(features='c cshlib add_targets',
+                   includes=['.'],
+                   export_includes='.',
+                   target='z',
+                   source='adler32.c crc32.c deflate.c infback.c inffast.c inflate.c inftrees.c trees.c zutil.c ' \
+                          'compress.c uncompr.c gzclose.c gzlib.c gzread.c gzwrite.c',
+                   path=driverNode,
+                   defines=defs,
+                   env=env.derive(),
+                   name='ZIP_SHARED',
+                   targets_to_add=[]))
 
         # Minizip is included in the zlib tarball but is not built when you
         # just run configure.  Beyond that, when you build minizip, you just
@@ -103,7 +117,8 @@ def build(bld):
         # get compression to work, not decompression.
         minizipDir = os.path.join('contrib', 'minizip')
         minizipIncludes = ['.', minizipDir]
-        minizip = bld(features='c c%s add_targets' % env['LIB_TYPE'] or 'stlib',
+
+        minizip = bld(features='c cstlib add_targets',
                       includes=minizipIncludes,
                       export_includes=minizipIncludes,
                       target='minizip',

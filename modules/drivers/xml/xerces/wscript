@@ -296,13 +296,22 @@ def build(bld):
         # build the library
         libType = env['LIB_TYPE'] or 'stlib'
         xercesDefines = env['DEFINES'] + ['HAVE_CONFIG_H']
-        xerces = bld(features='c c%s add_targets' % env['LIB_TYPE'] or 'stlib',
+        xerces = bld(features='c cstlib add_targets',
                      source=sources,
                      includes=['.', 'src'], export_includes=['src'],
                      target='xerces-c', path=xercesNode,
                      uselib=xercesUselibs, name='XML', env=env.derive(),
                      defines=xercesDefines,
                      targets_to_add=[])
+        if libType == 'shlib':
+            xerces.targets_to_add.append(
+                bld(features='c cshlib add_targets',
+                     source=sources,
+                     includes=['.', 'src'], export_includes=['src'],
+                     target='xerces-c', path=xercesNode,
+                     uselib=xercesUselibs, name='XML_SHARED', env=env.derive(),
+                     defines=xercesDefines,
+                     targets_to_add=[]))
         if libType == 'stlib':
             xerces.export_defines='XERCES_STATIC_LIBRARY'
 

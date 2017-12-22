@@ -5,6 +5,7 @@ MAINTAINER      = 'micah.bojrab@mdaus.com'
 VERSION         = '1.0'
 TARGETS_TO_ADD  = 'boost_config'
 USELIB          = 'BOOST_SERIALIZATION'
+STLIB_ONLY      = 'true'
 
 options = configure = distclean = lambda p: None
 
