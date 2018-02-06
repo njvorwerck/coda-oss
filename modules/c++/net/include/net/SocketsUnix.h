@@ -91,7 +91,7 @@ typedef char* ByteBuf_T;
 typedef int   BufSize_T;
 
 //! close socket and throw on failure
-inline void closeSocketOrThrow(net::Socket_T socket)
+inline void CODAAPI closeSocketOrThrow(net::Socket_T socket)
 {
     if (close(socket) != 0)
     {
@@ -106,7 +106,7 @@ inline void closeSocketOrThrow(net::Socket_T socket)
  *  coredumps on pipe breaks
  *
  */
-inline void UnixServerInit()
+inline void CODAAPI UnixServerInit()
 {
     dbg_printf("Initializing server socket\n");
 

@@ -29,7 +29,7 @@
 namespace net
 {
 
-class URLBuilder
+class CODAAPI URLBuilder
 {
 public:
 

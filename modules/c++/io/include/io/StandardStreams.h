@@ -52,7 +52,7 @@ namespace io
  * \class StandardOutStream
  * \brief Class for writing output streams to stdout
  */
-class StandardOutStream : public OutputStream
+class CODAAPI StandardOutStream : public OutputStream
 {
 
 public:
@@ -85,7 +85,7 @@ protected:
  * \class StandardErrStream
  * \brief Class for writing output streams to stderr
  */
-class StandardErrStream : public OutputStream
+class CODAAPI StandardErrStream : public OutputStream
 {
 
 public:

@@ -33,7 +33,7 @@
 
 namespace mt
 {
-    class TiedRequestHandler : public sys::Runnable
+    class CODAAPI TiedRequestHandler : public sys::Runnable
     {
 	RunnableRequestQueue* mRequestQueue;
 	sys::Semaphore* mSem;
@@ -60,7 +60,7 @@ namespace mt
 	virtual void run();
     };
 
-    class GenerationThreadPool : public BasicThreadPool<TiedRequestHandler>
+    class CODAAPI GenerationThreadPool : public BasicThreadPool<TiedRequestHandler>
     {
 	sys::Semaphore mGenerationSync;
 	CPUAffinityInitializer* mAffinityInit;

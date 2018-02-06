@@ -45,7 +45,7 @@ namespace net
  *  a socket of the specified protocol.
  *
  */
-class ServerSocketFactory
+class CODAAPI ServerSocketFactory
 {
 public:
 
@@ -106,7 +106,7 @@ protected:
  *  adds in the ability to broadcast across a socket.
  *
  */
-class UDPServerSocketFactory : public ServerSocketFactory
+class CODAAPI UDPServerSocketFactory : public ServerSocketFactory
 {
 public:
     //!  Constructor
@@ -151,7 +151,7 @@ public:
  *  listens with the specified backlog.  
  *
  */
-class TCPServerSocketFactory : ServerSocketFactory
+class CODAAPI TCPServerSocketFactory : ServerSocketFactory
 {
 public:
     //!  Traditional backlog value

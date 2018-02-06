@@ -23,7 +23,7 @@
 
 #ifndef __SYS_DLL_H__
 #define __SYS_DLL_H__
-
+#include <except/Context.h>
 
 /*!
  *  \file DLL.h
@@ -64,7 +64,7 @@ namespace sys
  *  This class behaves like its parent, except that it
  *  appends the system or DLL API error that caused the exception
  */
-class DLLException : public except::Exception
+class CODAAPI DLLException : public except::Exception
 {
 public:
     /*!
@@ -126,7 +126,7 @@ public:
  */
 
 
-class DLL
+class CODAAPI DLL
 {
 public:
 

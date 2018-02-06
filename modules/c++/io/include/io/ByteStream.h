@@ -56,7 +56,7 @@ namespace io
  *  0's can be anywhere (Null-bytes) making it impossible to use
  *  strings as containers.  
  */
-class ByteStream : public SeekableInputStream, public SeekableOutputStream
+class CODAAPI ByteStream : public SeekableInputStream, public SeekableOutputStream
 {
 public:
 

@@ -30,7 +30,7 @@ namespace xml
 {
 namespace lite
 {
-class XMLReaderInterface : public io::OutputStream
+class CODAAPI XMLReaderInterface : public io::OutputStream
 {
 public:
 

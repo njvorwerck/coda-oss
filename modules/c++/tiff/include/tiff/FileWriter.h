@@ -41,7 +41,7 @@ namespace tiff
  * to the same file.  Contains function for manipulating each 
  * sub-image and for writing data.
  *********************************************************************/
-class FileWriter
+class CODAAPI FileWriter
 {
 public:
 
@@ -163,8 +163,8 @@ enum { AUTO = -1 };
  *         guessing based on the input data size
  *
  */
-template<typename T> void writeTIFF(const T* image, size_t rows, size_t cols,
-                                    std::string imageFile, unsigned short et = AUTO, int es = AUTO)
+template<typename T> void CODAAPI writeTIFF(const T* image, size_t rows, size_t cols,
+                                            std::string imageFile, unsigned short et = AUTO, int es = AUTO)
 {
 
     if (es == AUTO)

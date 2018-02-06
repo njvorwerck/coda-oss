@@ -31,12 +31,12 @@
 
 namespace sys
 {
-inline long getThreadID()
+inline long CODAAPI getThreadID()
 {
     return (long)getpid();
 }
 
-class ThreadIrix : public ThreadInterface
+class CODAAPI ThreadIrix : public ThreadInterface
 {
 public:
 

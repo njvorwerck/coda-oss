@@ -47,7 +47,7 @@ namespace logging
  * renamed to 'error.log.1', and all future logs will be logged to error.log.
  * This is useful if you would like to keep backups of logs.
  */
-class RotatingFileHandler : public StreamHandler
+class CODAAPI RotatingFileHandler : public StreamHandler
 {
 
 public:

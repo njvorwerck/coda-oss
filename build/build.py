@@ -209,24 +209,43 @@ class CPPContext(Context.Context):
             targetName = '%s.%s' % (libName, self.safeVersion(libVersion))
         else:
             targetName = libName
-
+        if env['LIB_TYPE'] == 'shlib':
+            uselib = [f.replace('.lib', 'dll') for f in uselib]
+        uselibCopy = []
+        for lib in uselib:
+            if ' ' in lib:
+                uselibCopy.extend(lib.split())
+            else:
+                uselibCopy.append(lib)
+        uselib = uselibCopy
         glob_patterns = listify(modArgs.get('source', '')) or []
         glob_patterns = self._extendGlobPatterns(glob_patterns, modArgs)
 
         # Build the lib
-        lib = bld(features='%s %sstlib add_targets includes'% (libExeType, libExeType), includes=includes,
-                target=targetName, name=libName, export_includes=exportIncludes,
-                use=uselib_local, uselib=uselib, env=env.derive(),
-                defines=defines, path=path,
-                source=path.ant_glob(glob_patterns), targets_to_add=targetsToAdd)
-        lib.source = list(filter(partial(lambda x, t: basename(str(t)) not in x, modArgs.get('source_filter', '').split()), lib.source))
+        libType = 'stlib'
         if env['LIB_TYPE'] == 'shlib' and 'stlib_only' not in modArgs:
-            lib.targets_to_add.append(
-                bld(features='%s %sshlib add_targets includes'% (libExeType, libExeType), includes=includes,
-                target=targetName, name='{}_shared'.format(libName), export_includes=exportIncludes,
-                use=uselib_local, uselib=uselib, env=env.derive(),
-                defines=defines, path=path,
-                source=path.ant_glob(glob_patterns), targets_to_add=[]))
+            libType = 'shlib'
+            if 'xml' in modArgs['name']:
+                print(modArgs['name'])
+                print(uselib_local)
+                print(uselib)
+                #sys.exit(0)
+                #testUselib.append('XML')
+                #uselib.append('xerces-c')
+        features = '%s %s%s add_targets includes' % (libExeType, libExeType, libType)
+        lib = bld(features=features,
+                includes=includes,
+                target=targetName, 
+                name=libName, 
+                export_includes=exportIncludes,
+                use=uselib_local, 
+                uselib=uselib, 
+                env=env.derive(),
+                defines=defines, 
+                path=path,
+                source=path.ant_glob(glob_patterns), 
+                targets_to_add=targetsToAdd)
+        lib.source = list(filter(partial(lambda x, t: basename(str(t)) not in x, modArgs.get('source_filter', '').split()), lib.source))
 
         if env['install_libs']:
             lib.install_path = installPath or env['install_libdir']
@@ -272,15 +291,50 @@ class CPPContext(Context.Context):
             test_deps.append(modArgs['name'])
 
             test_deps = list(['%s-%s' % (x, lang) for x in test_deps + listify(modArgs.get('test_uselib_local', '')) + listify(modArgs.get('test_use',''))])
-
+            testUselib = []
+            for lib in modArgs.get('test_uselib', uselib):
+                if ' ' in lib:
+                    print(lib.split())
+                    testUselib.extend(lib.split())
+                    print(testUselib)
+                else:
+                    testUselib.append(lib)
+            if env['LIB_TYPE'] == 'shlib':
+                testUselib = [f.replace('.lib', 'dll') for f in testUselib]
+            stlib=[]
+            stlibpath=''
+            if 'zip' in modArgs['name']:
+                import pdb
+                #pdb.set_trace()
+                
+            if 'xml' in modArgs['name']:
+                print(modArgs['name'])
+                #testUselib.append('XML')
+                #test_deps.append('xerces-c')
+                print(testUselib)
+                print(test_deps)
+                print(uselib_local)
+                #sys.exit()
+                #stlib = ['xerces-c']
+                #stlibpath = ['C:\\Users\\jmeans.MDAUS\\Documents\\code\\coda-oss\\target\\modules\\drivers\\xml\\xerces\\xerces-c-3.1.1']
+                # sys.exit()
             sourceExtension = {'c++':'.cpp', 'c':'.c'}.get(lang, 'cxx')
             for test in testNode.ant_glob('*%s' % sourceExtension):
                 if str(test) not in listify(modArgs.get('test_filter', '')):
                     testName = splitext(str(test))[0]
-                    self.program(env=env.derive(), name=testName, target=testName, source=str(test),
-                                 use=test_deps,
-                                 uselib=modArgs.get('test_uselib', uselib),
-                                 lang=lang, path=testNode, includes=includes, defines=defines,
+                    self.program(env=env.derive(), 
+                                 name=testName, 
+                                 target=testName, 
+                                 source=str(test),
+                                 use=test_deps + uselib_local,
+                                 #stlib=stlib,
+                                 #stlibpath=stlibpath,
+                                 uselib=testUselib + uselib_local,
+                                 shlib=testUselib + uselib_local,
+                                 lang=lang, 
+                                 path=testNode, 
+                                 includes=includes, 
+                                 defines=defines,
                                  install_path='${PREFIX}/tests/%s' % modArgs['name'])
 
         pythonTestNode = path.parent.parent.make_node('python').make_node(str(path)).make_node('tests')
@@ -1140,14 +1194,23 @@ def listToTuple(defines):
     return d,u
 
 def writeConfig(conf, callback, guardTag, infile=None, outfile=None, path=None, feature=None, substDict=None):
+    print('writeConfig()')
+    print('guardTag: {}'.format(guardTag))
+
+    if 'xerces' in guardTag:
+        import pdb
+        #pdb.set_trace()
     if path is None:
         path = join('include', guardTag.replace('.', os.sep))
         tempPath = join(str(conf.path.relpath()), path)
         conf.env.append_value('header_builddir', guardTag + '=' + tempPath)
     if outfile is None:
         outfile = getConfigFilename(guardTag)
+        print('from guardTag')
     if feature is None:
-        path = join(path,'%s'%outfile)
+        if not isinstance(path, str):
+            path = path.abspath()
+        path = os.path.join(path, outfile)
 
     conf.setenv('%s_config_env'%guardTag, conf.env.derive())
     conf.env['define_key'] = []
@@ -1631,11 +1694,18 @@ def handleDefsFile(input, output, path, defs, chmod=None, conf=None):
     file.close()
 
     for k in list(defs.keys()):
+        if k == 'XERCES_PLATFORM_EXPORT':
+            print('dll')
+            print(defs[k])
+            print(outfile)
+            #sys.exit()
         v = defs[k]
         if v is None:
             v = ''
         code = re.sub(r'#undef %s(\s*\n)' % k, r'#define %s %s\1' % (k,v), code)
         code = re.sub(r'#define %s 0(\s*\n)' % k, r'#define %s %s\1' % (k,v), code)
+        if k == 'DLL_EXPORT':
+            code = code + '\n#define {} {}\n'.format(k, v)
     code = re.sub(r'(#undef[^\n\/\**]*)(\/\*.+\*\/)?(\n)', r'/* \1 */\3', code)
     file = open(outfile, 'w')
     file.write(code)

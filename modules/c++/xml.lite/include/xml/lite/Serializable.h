@@ -48,7 +48,7 @@ namespace lite
  *  all nodes in a document are dynamically allocated.  They are deleted
  *  by the class at destruction time.
  */
-class Serializable : public io::Serializable
+class CODAAPI Serializable : public io::Serializable
 {
 public:
     //! Constructor

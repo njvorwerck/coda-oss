@@ -46,7 +46,7 @@ namespace mt
  *  performTask() behavior.  
  *
  */
-template <typename Request_T> class AbstractThreadPool
+template <typename Request_T> class CODAAPI AbstractThreadPool
 {
 public:
 

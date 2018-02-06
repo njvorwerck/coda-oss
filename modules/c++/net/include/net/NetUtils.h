@@ -25,7 +25,7 @@
 
 #include <string>
 #include <vector>
-
+#include <except/Context.h>
 namespace net
 {
 
@@ -43,34 +43,34 @@ enum
  * - fragment
  * \param url the string to parse
  */
-std::vector<std::string> urlSplit(std::string url);
+std::vector<std::string> CODAAPI urlSplit(std::string url);
 
 /**
  * Joins the given url components into a url string
  */
-std::string urlJoin(std::string scheme, std::string location, int port = -1,
+std::string CODAAPI urlJoin(std::string scheme, std::string location, int port = -1,
         std::string path = "", std::string query = "", std::string fragment =
                 "");
 
 /**
  * Joins the url components given in the vector into a url string
  */
-std::string urlJoin(const std::vector<std::string>& parts);
+std::string CODAAPI urlJoin(const std::vector<std::string>& parts);
 
 /**
  * Quotes the given string - mainly for use in query strings
  */
-std::string quote(std::string s);
+std::string CODAAPI quote(std::string s);
 
 /**
  * Unquotes the given string - inverse of quote()
  */
-std::string unquote(std::string s);
+std::string CODAAPI unquote(std::string s);
 
 /**
  * Returns the standard port for the given protocol (or url)
  */
-int getStandardPort(std::string protocol);
+int CODAAPI getStandardPort(std::string protocol);
 
 }
 #endif

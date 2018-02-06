@@ -33,7 +33,7 @@
 
 namespace sys
 {
-class OSUnix : public AbstractOS
+class CODAAPI OSUnix : public AbstractOS
 {
 public:
     OSUnix()
@@ -199,7 +199,7 @@ protected:
 };
 
 
-class DirectoryUnix : public AbstractDirectory
+class CODAAPI DirectoryUnix : public AbstractDirectory
 {
 public:
     DirectoryUnix() : mDir(NULL)

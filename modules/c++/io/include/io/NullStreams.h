@@ -28,7 +28,7 @@
 
 namespace io
 {
-class NullInputStream : public InputStream
+class CODAAPI NullInputStream : public InputStream
 {
 public:
     NullInputStream(sys::SSize_T size) :
@@ -92,7 +92,7 @@ protected:
     }
 };
 
-class NullOutputStream : public OutputStream
+class CODAAPI NullOutputStream : public OutputStream
 {
 public:
     NullOutputStream()

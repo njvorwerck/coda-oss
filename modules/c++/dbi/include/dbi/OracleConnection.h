@@ -39,7 +39,7 @@ namespace dbi
  *  \class OracleResultSet
  *  \brief This class defines the Oracle interface for a result set
  */
-class OracleResultSet : public ResultSet
+class CODAAPI OracleResultSet : public ResultSet
 {
 public:
     /*!
@@ -88,7 +88,7 @@ private:
  * This class provides the basis for Oracle connections
  * 
  */
-class OracleConnection : public DatabaseConnection
+class CODAAPI OracleConnection : public DatabaseConnection
 {
 public:
 

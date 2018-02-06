@@ -36,7 +36,7 @@ namespace sys
  *  Provide the API for condition variables in this thread wrapper
  */
 
-class ConditionVarInterface
+class CODAAPI ConditionVarInterface
 {
 public:
 

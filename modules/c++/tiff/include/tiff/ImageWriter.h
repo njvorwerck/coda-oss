@@ -40,11 +40,11 @@ namespace tiff
  * Writes a TIFF image to a stream.  Contains functions for writing
  * the image's IFD, and for putting data to a stream.
  *********************************************************************/
-class ImageWriter
+class CODAAPI ImageWriter
 {
 public:
     //! The ideal tile size if a tiled file.
-    static const unsigned short CHUNK_SIZE;
+    static const unsigned short CHUNK_SIZE = 8192;
 
     //! The format of the image, either STRIPPED or TILED.
     enum ImageFormat  { STRIPPED, TILED };

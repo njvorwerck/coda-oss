@@ -54,7 +54,7 @@ typedef int         BufSize_T;
 typedef const SockAddr_T ConnParam2_T;
 
 //! close socket and throw on failure
-inline void closeSocketOrThrow(net::Socket_T socket)
+inline void CODAAPI closeSocketOrThrow(net::Socket_T socket)
 {
     if (closesocket(socket) != 0)
     {
@@ -68,7 +68,7 @@ inline void closeSocketOrThrow(net::Socket_T socket)
  *  Method calls the dll destroy stuff
  *  \return the result of the startup
  */
-inline void Win32SocketDestroy()
+inline void CODAAPI Win32SocketDestroy()
 {
     WSACleanup();
 }
@@ -77,7 +77,7 @@ inline void Win32SocketDestroy()
  *  Method calls the dll init stuff
  *  \return The result of the startup
  */
-inline void Win32SocketInit()
+inline void CODAAPI Win32SocketInit()
 {
     static sys::Mutex mutex;
     static bool inited = false;

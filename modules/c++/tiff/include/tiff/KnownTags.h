@@ -35,7 +35,7 @@ namespace tiff
 /**
  * This class is a container for known TIFF tags.
  */
-class KnownTags
+class CODAAPI KnownTags
 {
 public:
 

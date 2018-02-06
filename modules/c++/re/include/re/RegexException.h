@@ -33,7 +33,7 @@ namespace re
  *  
  *  Specialized for regular expression errors
  */
-class RegexException : public except::Exception
+class CODAAPI RegexException : public except::Exception
 {
 public:
 

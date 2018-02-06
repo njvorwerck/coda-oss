@@ -39,7 +39,7 @@ namespace logging
  *  \class Formatter
  *  \brief  This class is the interface for deriving formatters.
  */
-class Formatter
+class CODAAPI Formatter
 {
 public:
 

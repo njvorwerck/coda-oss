@@ -39,7 +39,7 @@ namespace tiff
  * Reads a TIFF image and parses out the IFD.  Contains functions for
  * getting data from the image and retrieving the TIFF IFD.
  *********************************************************************/
-class ImageReader
+class CODAAPI ImageReader
 {
 public:
     /**

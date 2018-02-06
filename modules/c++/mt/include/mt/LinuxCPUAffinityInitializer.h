@@ -33,7 +33,7 @@
 
 namespace mt
 {
-    class LinuxCPUAffinityInitializer : public mt::CPUAffinityInitializer
+    class CODAAPI LinuxCPUAffinityInitializer : public mt::CPUAffinityInitializer
     {
 	int mNextCPU;
 	cpu_set_t nextCPU();

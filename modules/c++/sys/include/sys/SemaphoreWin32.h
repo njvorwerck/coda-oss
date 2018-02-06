@@ -34,7 +34,7 @@
 namespace sys
 {
 
-class SemaphoreWin32 : public SemaphoreInterface
+class CODAAPI SemaphoreWin32 : public SemaphoreInterface
 {
 public:
     SemaphoreWin32(unsigned int count = 0, size_t maxCount = std::numeric_limits<size_t>::max());

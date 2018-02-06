@@ -47,7 +47,7 @@ namespace io
  *  This class corresponds closely to its java namesake.
  *  It uses native file handles to make writes.
  */
-class FileOutputStreamOS : public SeekableOutputStream
+class CODAAPI FileOutputStreamOS : public SeekableOutputStream
 
 {
 protected:

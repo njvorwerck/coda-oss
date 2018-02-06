@@ -41,7 +41,7 @@
 
 namespace io
 {
-class SeekableInputStream :
+class CODAAPI SeekableInputStream :
             public InputStream, public Seekable
 {
 public:
@@ -52,7 +52,7 @@ public:
     using InputStream::streamTo;
 };
 
-class SeekableOutputStream :
+class CODAAPI SeekableOutputStream :
             public OutputStream, public Seekable
 {
 public:
@@ -62,7 +62,7 @@ public:
     {}
 };
 
-class SeekableBidirectionalStream :
+class CODAAPI SeekableBidirectionalStream :
             public BidirectionalStream, public Seekable
 {
 public:

@@ -27,6 +27,11 @@
 #include "logging/Logger.h"
 #include <deque>
 
+logging::Logger::Logger(std::string name) :
+    mName(name)
+{
+}
+
 logging::Logger::~Logger()
 {
     reset();
@@ -202,6 +207,15 @@ void logging::Logger::setLevel(LogLevel level)
         //set the level
         p->first->setLevel(level);
     }
+}
+void logging::Logger::setName(const std::string& name)
+{
+    mName = name;
+}
+
+std::string logging::Logger::getName() const
+{
+    return mName;
 }
 
 void logging::Logger::reset()

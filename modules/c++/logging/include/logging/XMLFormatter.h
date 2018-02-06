@@ -52,7 +52,7 @@ namespace logging
  *  </Record>
  *  
  */
-class XMLFormatter : public logging::Formatter
+class CODAAPI XMLFormatter : public logging::Formatter
 {
 public:
 

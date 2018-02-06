@@ -62,7 +62,7 @@ namespace except
  *
  * This class is the base for all exceptions.
  */
-class Exception : public Throwable
+class CODAAPI Exception : public Throwable
 {
 public:
 

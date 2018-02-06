@@ -41,7 +41,7 @@ namespace xml
 namespace lite
 {
 
-class XMLReaderLibXML : public XMLReaderInterface
+class CODAAPI XMLReaderLibXML : public XMLReaderInterface
 {
     
     xmlSAXHandler  mSAXLibXML;

@@ -37,7 +37,7 @@ namespace sys
 ///        "Strategies for Implementing POSIX Condition Variables on Win32"
 ///        article at www.cse.wustl.edu/~schmidt/win32-cv-1.html.
 ///        This is the ACE framework implementation.
-class ConditionVarDataWin32
+class CODAAPI ConditionVarDataWin32
 {
 public:
     ConditionVarDataWin32();
@@ -74,7 +74,7 @@ private:
     bool mWasBroadcast;
 };
 
-class ConditionVarWin32 : public ConditionVarInterface
+class CODAAPI ConditionVarWin32 : public ConditionVarInterface
 
 {
 public:

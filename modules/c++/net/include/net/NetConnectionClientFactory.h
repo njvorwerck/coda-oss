@@ -44,7 +44,7 @@ namespace net
  *  The connection can be used to read or write data over
  *  a socket
  */
-class NetConnectionClientFactory
+class CODAAPI NetConnectionClientFactory
 {
 public:
     /*!

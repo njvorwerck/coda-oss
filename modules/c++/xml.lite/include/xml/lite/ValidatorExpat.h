@@ -41,7 +41,7 @@ namespace lite
  *
  * This class is the Expat schema validator
  */
-class ValidatorExpat : public ValidatorInterface
+class CODAAPI ValidatorExpat : public ValidatorInterface
 {
 public:
 

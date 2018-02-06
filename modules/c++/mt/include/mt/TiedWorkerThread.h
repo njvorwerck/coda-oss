@@ -34,7 +34,7 @@ namespace mt
  * @created 03-Jan-2007 12:51:46
  */
 template <typename Request_T>
-class TiedWorkerThread : public mt::WorkerThread<Request_T>
+class CODAAPI TiedWorkerThread : public mt::WorkerThread<Request_T>
 {
 public:
 	TiedWorkerThread(mt::RequestQueue<Request_T>* requestQueue, 

@@ -28,7 +28,7 @@
 namespace tiff
 {
 
-class Utils
+class CODAAPI Utils
 {
 public:
 

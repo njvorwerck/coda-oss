@@ -21,6 +21,7 @@
  */
 
 #include <io/FileInputStream.h>
+#include <io/ReadUtils.h>
 
 namespace io
 {
@@ -48,5 +49,12 @@ void readFileContents(const std::string& pathname, std::string& str)
     {
         str.assign(reinterpret_cast<char*>(&buffer[0]), buffer.size());
     }
+}
+
+std::string readFileContents(const std::string& pathname)
+{
+    std::string str;
+    readFileContents(pathname, str);
+    return str;
 }
 }

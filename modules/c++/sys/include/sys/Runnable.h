@@ -23,7 +23,7 @@
 
 #ifndef __SYS_RUNNABLE_H__
 #define __SYS_RUNNABLE_H__
-
+#include <except/Context.h>
 
 namespace sys
 {
@@ -42,7 +42,7 @@ namespace sys
  *  Design Pattern.
  *
  */
-class Runnable
+class CODAAPI Runnable
 {
 public:
     /*! Constructor  */

@@ -28,6 +28,7 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <iostream>
+#include <except/Context.h>
 
 #if defined(__sgi) || defined(__sgi__)
 #   include <stdarg.h>
@@ -87,14 +88,14 @@ namespace sys
  *  \param format
  *  \param ...  Put in any format value here
  */
-void dbgPrintf(const char *format, ...);
+void CODAAPI dbgPrintf(const char *format, ...);
 
 /*!
  *  Prints to DEBUG_STREAM and kills the program
  *  \param format
  *  \param ...  Put in any format value here
  */
-void diePrintf(const char *format, ...);
+void CODAAPI diePrintf(const char *format, ...);
 }
 
 #define dbg_printf sys::dbgPrintf

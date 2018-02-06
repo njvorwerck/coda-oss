@@ -51,7 +51,7 @@ namespace lite
 
 typedef xercesc::DOMError ValidationError;
 
-class ValidationErrorHandler : public xercesc::DOMErrorHandler
+class CODAAPI ValidationErrorHandler : public xercesc::DOMErrorHandler
 {
 public:
     ValidationErrorHandler() {}
@@ -92,7 +92,7 @@ private:
  *
  * This class is the Xercesc schema validator
  */
-class ValidatorXerces : public ValidatorInterface
+class CODAAPI ValidatorXerces : public ValidatorInterface
 {
 private:
     XercesContext mCtxt;    //! this must be the first member listed
@@ -134,7 +134,7 @@ private:
 }
 
 //! stream the entire log -- newline separated
-std::ostream& operator<< (
+std::ostream CODAAPI & operator<< (
     std::ostream& out, 
     const xml::lite::ValidationErrorHandler& errorHandler);
 

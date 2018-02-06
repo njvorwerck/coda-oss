@@ -40,7 +40,7 @@ namespace dbi
  *  \class PgSQLResultSet
  *  \brief This class defines the PostgreSQL interface for a result set
  */
-class PgSQLResultSet : public ResultSet
+class CODAAPI PgSQLResultSet : public ResultSet
 {
 public:
     /*!
@@ -89,7 +89,7 @@ private:
  * This class provides the basis for PostgreSQL connections
  * 
  */
-class PgSQLConnection : public DatabaseConnection
+class CODAAPI PgSQLConnection : public DatabaseConnection
 {
 public:
 

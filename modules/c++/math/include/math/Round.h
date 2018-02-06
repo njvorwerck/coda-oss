@@ -24,6 +24,7 @@
 #define __MATH_ROUND_H__
 
 #include <cmath>
+#include <except/Context.h>
 
 namespace math
 {
@@ -33,7 +34,7 @@ namespace math
  *  \param value A number to evaluate
  *  \return The 'fixed' number
  */
-template<typename T> inline T fix(T value)
+template<typename T> inline T CODAAPI fix(T value)
 {
     return (value > 0.0 ? std::floor(value) : std::ceil(value));
 }
@@ -45,7 +46,7 @@ template<typename T> inline T fix(T value)
  *  \param value A number to evaluate
  *  \return The rounded number
  */
-template<typename T> inline T round(T value)
+template<typename T> inline T CODAAPI round(T value)
 {
     return (value > 0.0 ? std::floor(value + 0.5) : std::ceil(value - 0.5));
 }
@@ -57,7 +58,7 @@ template<typename T> inline T round(T value)
  *  \param fractionalDigits Number of fractional digits to round to
  *  \return The rounded number
  */
-template<typename T> inline T round(T value, size_t fractionalDigits)
+template<typename T> inline T CODAAPI round(T value, size_t fractionalDigits)
 {
     double power10 = 1.0;
     for (size_t i = 0; i < fractionalDigits; ++i)

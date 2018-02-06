@@ -34,7 +34,7 @@
 namespace sys
 {
 
-    inline long getThreadID()
+    inline long CODAAPI getThreadID()
     {
         return (long)thr_self();
     }
@@ -46,7 +46,7 @@ namespace sys
  *  This class provides the wrapper for a pthread_t.  
  *
  */
-class ThreadSolaris : public ThreadInterface
+class CODAAPI ThreadSolaris : public ThreadInterface
 {
 public:
 

@@ -13,7 +13,7 @@ namespace net
  *  Interface class that contains various methods for running an
  *  application as a background task.
  */
-class DaemonInterface
+class CODAAPI DaemonInterface
 {
 public:
     //!  Constructor

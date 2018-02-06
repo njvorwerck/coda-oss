@@ -33,7 +33,7 @@ namespace io
  * Serialize an array to/from a stream.
  */
 template<typename T>
-class SerializableArray : public Serializable
+class CODAAPI SerializableArray : public Serializable
 {
 public:
 

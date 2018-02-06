@@ -43,7 +43,7 @@ namespace sys
  *  allows us to use it from within a Process to create a
  *  'system()'-like functionality.
  */
-class Exec : public sys::Runnable
+class CODAAPI Exec : public sys::Runnable
 {
 public:
     /*!
@@ -82,7 +82,7 @@ protected:
  *  \brief opens a child process and connects a pipe
  *         to read back the std::cout
  */
-class ExecPipe : Exec
+class CODAAPI ExecPipe : Exec
 {
 
 public:

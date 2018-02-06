@@ -34,7 +34,7 @@ namespace zip
  *  Class stores the information about individual elements
  *  in a PKZIP zip file
  */
-class ZipEntry
+class CODAAPI ZipEntry
 {
     enum CompressionMethod
     {
@@ -152,7 +152,7 @@ public:
 /*!
  *  Output stream overload
  */
-std::ostream& operator<<(std::ostream& os, const zip::ZipEntry& ze);
+std::ostream CODAAPI & operator<<(std::ostream& os, const zip::ZipEntry& ze);
 
 #endif
 

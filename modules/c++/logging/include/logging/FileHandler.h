@@ -39,7 +39,7 @@ namespace logging
  * \class FileHandler
  * \brief Emits LogRecords to a file on disk.
  */
-class FileHandler : public StreamHandler
+class CODAAPI FileHandler : public StreamHandler
 {
 
 public:

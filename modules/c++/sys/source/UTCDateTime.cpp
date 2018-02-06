@@ -80,8 +80,10 @@ int getNumFullDaysInYearSoFar(int year, int month, int dayOfMonth)
 
 }
 
-const char sys::UTCDateTime::DEFAULT_DATETIME_FORMAT[] = "%Y-%m-%dT%H:%M:%SZ";
-
+const char* sys::UTCDateTime::getDefaultDateTimeFormat()
+{ 
+    return "%Y-%m-%dT%H:%M:%SZ";
+}
 
 void sys::UTCDateTime::toMillis()
 {
@@ -215,7 +217,7 @@ sys::UTCDateTime::UTCDateTime(const std::string& time,
 
 std::string sys::UTCDateTime::format() const
 {
-    return format(DEFAULT_DATETIME_FORMAT);
+    return format(getDefaultDateTimeFormat());
 }
 
 std::ostream& operator<<(std::ostream& os, const sys::UTCDateTime& dateTime)
@@ -228,6 +230,6 @@ std::istream& operator>>(std::istream& is, sys::UTCDateTime& dateTime)
 {
     std::string str;
     is >> str;
-    dateTime.setTime(str, sys::UTCDateTime::DEFAULT_DATETIME_FORMAT);
+    dateTime.setTime(str, sys::UTCDateTime::getDefaultDateTimeFormat());
     return is;
 }

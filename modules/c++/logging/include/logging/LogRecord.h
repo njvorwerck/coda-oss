@@ -41,7 +41,7 @@ namespace logging
  * contain all the information pertinent to the event being logged. The
  * record also includes the timestamp when the record was created.
  */
-class LogRecord
+class CODAAPI LogRecord
 {
 
 public:

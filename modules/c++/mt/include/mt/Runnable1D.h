@@ -13,7 +13,7 @@
 namespace mt
 {
 template <typename OpT>
-class Runnable1D : public sys::Runnable
+class CODAAPI Runnable1D : public sys::Runnable
 {
 public:
     Runnable1D(size_t startElement,
@@ -40,7 +40,7 @@ private:
 };
 
 template <typename OpT>
-void run1D(size_t numElements, size_t numThreads, const OpT& op)
+void CODAAPI run1D(size_t numElements, size_t numThreads, const OpT& op)
 {
     if (numThreads <= 1)
     {
@@ -68,7 +68,7 @@ void run1D(size_t numElements, size_t numThreads, const OpT& op)
 // need access to a per-thread result afterwards (make these member variables
 // mutable since operator() is const).
 template <typename OpT>
-void run1D(size_t numElements, size_t numThreads, const std::vector<OpT>& ops)
+void CODAAPI run1D(size_t numElements, size_t numThreads, const std::vector<OpT>& ops)
 {
     if (ops.size() != numThreads)
     {
@@ -103,7 +103,7 @@ void run1D(size_t numElements, size_t numThreads, const std::vector<OpT>& ops)
 // This is useful when each thread needs its own local storage (make this
 // scratch space mutable since operator() is const).
 template <typename OpT>
-void run1DWithCopies(size_t numElements, size_t numThreads, const OpT& op)
+void CODAAPI run1DWithCopies(size_t numElements, size_t numThreads, const OpT& op)
 {
     const std::vector<OpT> ops(numThreads, op);
     run1D(numElements, numThreads, ops);

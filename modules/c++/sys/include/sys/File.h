@@ -67,7 +67,7 @@ typedef int _SYS_HANDLE_TYPE;
 
 namespace sys
 {
-class File
+class CODAAPI File
 {
 public:
 

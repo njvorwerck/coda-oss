@@ -40,7 +40,7 @@ namespace sys
  *  Implements a solaris thread mutex and wraps the outcome
  *
  */
-class MutexSolaris : public MutexInterface
+class CODAAPI MutexSolaris : public MutexInterface
 {
 public:
     //!  Constructor

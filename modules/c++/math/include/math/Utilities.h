@@ -26,6 +26,7 @@
 #include <stdlib.h>
 #include <math/math_config.h>
 #include <sys/Conf.h>
+#include <except/Context.h>
 #ifdef HAVE_STD_ISNAN
     #include <cmath>
 #elif HAVE_ISNAN
@@ -40,7 +41,7 @@ namespace math
  * \return 1 if val is positive, -1 if negative, 0 otherwise
  */
 template <typename T>
-int sign(T val)
+int CODAAPI sign(T val)
 {
     if (val < 0)
     {
@@ -53,7 +54,7 @@ int sign(T val)
     return 0;
 }
 
-inline double square(double val)
+inline double CODAAPI square(double val)
 {
     return val * val;
 }
@@ -64,7 +65,7 @@ inline double square(double val)
  * \param value Argument to be checked for NaN
  * \return true if value is NaN
  */
-template <typename T> bool isNaN(T value)
+template <typename T> bool CODAAPI isNaN(T value)
 {
 #ifdef HAVE_STD_ISNAN
     return std::isnan(value);
@@ -86,7 +87,7 @@ template <typename T> bool isNaN(T value)
  * \param k number of outcomes
  * \return n choose k
  */
-sys::Uint64_T nChooseK(size_t n, size_t k);
+sys::Uint64_T CODAAPI nChooseK(size_t n, size_t k);
 }
 
 #endif

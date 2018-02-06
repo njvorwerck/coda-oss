@@ -42,7 +42,7 @@ namespace net
  *  The SocketAddress class provides a familiar, simplified
  *  interface for the BSD sockaddr functionality.
  */
-class SocketAddress
+class CODAAPI SocketAddress
 {
     SockAddrIn_T mAddress;
 public:

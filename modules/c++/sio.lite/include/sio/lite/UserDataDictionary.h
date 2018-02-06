@@ -44,7 +44,7 @@ namespace lite
  * 
  */
 template < typename Key_T, typename Value_T >
-class OrderedDictionary
+class CODAAPI OrderedDictionary
 {
 protected:
     std::list< std::pair<Key_T, Value_T> > mList;

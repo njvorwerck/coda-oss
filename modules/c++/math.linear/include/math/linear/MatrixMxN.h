@@ -25,11 +25,14 @@
 #include <cmath>
 #include <limits>
 #include <import/sys.h>
+#include <except/Context.h>
 
 namespace math
 {
 namespace linear
 {
+template<typename _T> bool CODAAPI equals(const _T& e1, const _T& e2);
+template <typename T> bool CODAAPI almostZero(const T& value);
 
 // Create a safe comparison
 template<typename _T> bool equals(const _T& e1, const _T& e2)
@@ -112,7 +115,7 @@ bool almostZero(const T& value)
  *
  */
 template <size_t _MD, size_t _ND, typename _T=double>
-class MatrixMxN
+class CODAAPI MatrixMxN
 {
 public:
     typedef MatrixMxN<_MD, _ND, _T> Like_T;
@@ -1231,7 +1234,7 @@ public:
  *  \param cv An optional constant value
  */
 template<size_t _MD, size_t _ND, typename _T> MatrixMxN<_MD, _ND, _T>
-    constantMatrix(_T cv = 0)
+    CODAAPI constantMatrix(_T cv = 0)
 {
     MatrixMxN<_MD, _ND, _T> mx(cv);
     return mx;
@@ -1247,7 +1250,7 @@ template<size_t _MD, size_t _ND, typename _T> MatrixMxN<_MD, _ND, _T>
  *
  */
 template<size_t _ND, typename _T> MatrixMxN<_ND, _ND, _T>
-    identityMatrix()
+    CODAAPI identityMatrix()
 {
     MatrixMxN<_ND, _ND, _T> mx;
     for (size_t i = 0; i < _ND; i++)
@@ -1267,9 +1270,10 @@ template<size_t _ND, typename _T> MatrixMxN<_ND, _ND, _T>
  *
  */
 template<size_t _MD, size_t _ND, size_t _PD, typename _T>
-    math::linear::MatrixMxN<_ND, _PD, _T> solveLU(const std::vector<size_t>& pivotsM,
-                                                  const MatrixMxN<_MD, _ND, _T> &lu,
-                                                  const MatrixMxN<_ND, _PD, _T> &b)
+    math::linear::MatrixMxN<_ND, _PD, _T> CODAAPI 
+        solveLU(const std::vector<size_t>& pivotsM,
+                const MatrixMxN<_MD, _ND, _T> &lu,
+                const MatrixMxN<_ND, _PD, _T> &b)
 {
     // If we dont have something in the diagonal, we can't solve this
     math::linear::MatrixMxN<_ND, _PD, _T> x = b.permute(pivotsM, _PD);
@@ -1315,7 +1319,8 @@ template<size_t _MD, size_t _ND, size_t _PD, typename _T>
  *
  */
 template<size_t _ND, typename _T> inline
-    MatrixMxN<_ND, _ND, _T> inverseLU(const MatrixMxN<_ND, _ND, _T>& mx)
+    MatrixMxN<_ND, _ND, _T> CODAAPI
+        inverseLU(const MatrixMxN<_ND, _ND, _T>& mx)
 {
     MatrixMxN<_ND, _ND, _T> a((_T)0);
 
@@ -1346,7 +1351,7 @@ template<size_t _ND, typename _T> inline
  *  \endcode
  */
 template<size_t _ND, typename _T> inline
-    MatrixMxN<_ND, _ND, _T> inverse(const MatrixMxN<_ND, _ND, _T>& mx)
+    MatrixMxN<_ND, _ND, _T> CODAAPI inverse(const MatrixMxN<_ND, _ND, _T>& mx)
 {
     return inverseLU<_ND, _T>(mx);
 }
@@ -1524,7 +1529,7 @@ template<size_t _MD, size_t _ND, typename _T> math::linear::MatrixMxN<_MD, _ND, 
  *  \param The epsilon fudge factor
  *  \return 
  */
-template<typename Matrix_T> Matrix_T tidy(const Matrix_T& constMatrix,
+template<typename Matrix_T> Matrix_T CODAAPI tidy(const Matrix_T& constMatrix,
                                           double eps = std::numeric_limits<float>::epsilon())
 {
     Matrix_T mx = constMatrix;
@@ -1554,7 +1559,7 @@ template<typename Matrix_T> Matrix_T tidy(const Matrix_T& constMatrix,
  *  \return Reference to ostream
  */
 template<size_t _MD, size_t _ND, typename _T>
-    std::ostream& operator<<(std::ostream& os,
+    std::ostream CODAAPI & operator<<(std::ostream& os,
                              const math::linear::MatrixMxN<_MD, _ND, _T>& m)
 {
 

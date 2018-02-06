@@ -46,7 +46,7 @@ namespace mt
  * sys::Runnable objects and wait for all threads to complete.
  *
  */
-class ThreadGroup
+class CODAAPI ThreadGroup
 {
 public:
 

@@ -53,7 +53,7 @@ namespace ssl
  *  the SerializableConnection class, to avoid dealing with the byte
  *  transfer layer.
  */
-class SSLConnection : public NetConnection
+class CODAAPI SSLConnection : public NetConnection
 {
 public:
     /*!

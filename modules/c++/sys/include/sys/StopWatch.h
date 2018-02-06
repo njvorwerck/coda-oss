@@ -29,7 +29,7 @@
 namespace sys
 {
 
-class StopWatch
+class CODAAPI StopWatch
 {
 public:
     StopWatch(){}
@@ -55,7 +55,7 @@ public:
     virtual void clear() = 0;
 };
 
-class RealTimeStopWatch : public StopWatch
+class CODAAPI RealTimeStopWatch : public StopWatch
 {
 protected:
     double mStartTime;
@@ -76,7 +76,7 @@ public:
     void clear();
 };
 
-class CPUStopWatch : public StopWatch
+class CODAAPI CPUStopWatch : public StopWatch
 {
 protected:
     clock_t mStartTime;

@@ -43,7 +43,7 @@ namespace ssl
  *  The connection can be used to read or write data over
  *  a socket
  */
-class SSLConnectionClientFactory : public NetConnectionClientFactory
+class CODAAPI SSLConnectionClientFactory : public NetConnectionClientFactory
 {
 public:
 

@@ -39,7 +39,7 @@ namespace io
  *  This object has a known derived type SOAPMessage, which is concretely
  *  defined to handle SOAP objects
  */
-class SerializableFile: public Serializable
+class CODAAPI SerializableFile: public Serializable
 {
 public:
     //! Default constructor

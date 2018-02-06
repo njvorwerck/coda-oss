@@ -39,7 +39,7 @@ namespace io
  *  \brief captures the standard output from a pipe
  *         and streams it to the specified location
  */
-class PipeStream : InputStream
+class CODAAPI PipeStream : InputStream
 {
 
 public:

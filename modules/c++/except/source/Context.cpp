@@ -29,8 +29,9 @@
  * \brief defines a class that contains the information surrounding an
  * exception or error.
  */
-
-except::Context::Context(const except::Context& c)
+ namespace except
+ {
+Context::Context(const Context& c)
 {
     mMessage = c.getMessage();
     mTime = c.getTime();
@@ -39,7 +40,7 @@ except::Context::Context(const except::Context& c)
     mLine = c.getLine();
 }
 
-except::Context& except::Context::operator=(const except::Context& c)
+Context& Context::operator=(const Context& c)
 {
     if (&c != this)
     {
@@ -52,7 +53,7 @@ except::Context& except::Context::operator=(const except::Context& c)
     return *this;
 }
 
-std::ostream& operator<< (std::ostream& os, const except::Context& c)
+std::ostream& operator<< (std::ostream& os, const Context& c)
 {
     os << "(" << c.getFile() << ", ";
     os << c.getLine() << ", ";
@@ -60,5 +61,6 @@ std::ostream& operator<< (std::ostream& os, const except::Context& c)
     os << c.getTime() << "] '";
     os << c.getMessage() << "' ";
     return os;
+}
 }
 

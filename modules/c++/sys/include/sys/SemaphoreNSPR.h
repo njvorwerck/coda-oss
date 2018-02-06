@@ -33,7 +33,7 @@
 
 namespace sys
 {
-class SemaphoreNSPR : public SemaphoreInterface
+class CODAAPI SemaphoreNSPR : public SemaphoreInterface
 {
 public:
     SemaphoreNSPR(unsigned count = 0)

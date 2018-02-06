@@ -37,7 +37,7 @@ namespace net
  *  requests.  Re-uses the same handler for each request.
  *
  */
-class SingleThreadedAllocStrategy: public AllocStrategy
+class CODAAPI SingleThreadedAllocStrategy: public AllocStrategy
 {
 public:
 

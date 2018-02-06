@@ -39,7 +39,7 @@
 namespace sys
 {
 //    typedef ::sem_t sem_t;
-class SemaphorePosix : public SemaphoreInterface
+class CODAAPI SemaphorePosix : public SemaphoreInterface
 {
 public:
     SemaphorePosix(unsigned int count = 0);

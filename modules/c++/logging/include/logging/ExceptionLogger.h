@@ -40,7 +40,7 @@ namespace logging
  *
  * \brief ExceptionLogger owns a Logger and logs exceptions passed to it. 
  */
-class ExceptionLogger
+class CODAAPI ExceptionLogger
 {
 protected:
     sys::Mutex mLock;

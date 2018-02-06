@@ -45,7 +45,7 @@ namespace tiff
  * functions for printing out the entry, reading and writing it to a
  * file, and accessing the data.
  *********************************************************************/
-class IFDEntry : public io::Serializable
+class CODAAPI IFDEntry : public io::Serializable
 {
 public:
     //! Constructor

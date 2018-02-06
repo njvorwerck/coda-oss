@@ -2,6 +2,7 @@ NAME            = 'math.poly'
 MAINTAINER      = 'jmrandol@users.sourceforge.net'
 VERSION         = '0.2'
 MODULE_DEPS     = 'sys math.linear'
+STLIB_ONLY      = 'true'
 
 options = configure = distclean = lambda p: None
 

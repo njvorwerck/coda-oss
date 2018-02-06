@@ -38,7 +38,7 @@ namespace sys
  *  Implements a pthread mutex and wraps the outcome
  *
  */
-class MutexIrix : public MutexInterface
+class CODAAPI MutexIrix : public MutexInterface
 {
 public:
     //!  Constructor

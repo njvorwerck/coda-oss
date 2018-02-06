@@ -29,7 +29,7 @@
 namespace re
 {
 
-struct RegexPredicate : public sys::FilePredicate
+struct CODAAPI RegexPredicate : public sys::FilePredicate
 {
 public:
     RegexPredicate(const std::string& match)

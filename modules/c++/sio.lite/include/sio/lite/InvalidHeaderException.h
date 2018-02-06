@@ -29,7 +29,7 @@ namespace sio
 {
 namespace lite
 {
-class InvalidHeaderException : public except::Exception
+class CODAAPI InvalidHeaderException : public except::Exception
 {
 public:
     //!  Default constructor

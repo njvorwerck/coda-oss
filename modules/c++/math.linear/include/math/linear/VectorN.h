@@ -31,7 +31,7 @@ namespace linear
 {
  
 
-template<size_t _ND, typename _T=double> class VectorN
+template<size_t _ND, typename _T=double> class CODAAPI VectorN
 {
     MatrixMxN<_ND, 1, _T> mRaw;
     
@@ -357,8 +357,8 @@ public:
 
 };
 
-template<typename _T> VectorN<3, _T> cross(const VectorN<3, _T>& u,
-                                           const VectorN<3, _T>& v)
+template<typename _T> VectorN<3, _T> CODAAPI cross(const VectorN<3, _T>& u,
+                                                   const VectorN<3, _T>& v)
 {
     VectorN<3, _T> xp;
     xp[0] = (u[1]*v[2] - u[2]*v[1]);
@@ -368,21 +368,21 @@ template<typename _T> VectorN<3, _T> cross(const VectorN<3, _T>& u,
 }
 
 template<size_t _ND, typename _T> VectorN<_ND, _T> 
-    constantVector(_T cv = 0)
+    CODAAPI constantVector(_T cv = 0)
 {
     VectorN<_ND, _T> v(constantMatrix<_ND, 1, _T>(cv));
     return v;
 }
 
 template<size_t _MD, size_t _ND, typename _T> 
-    math::linear::VectorN<_MD, _T>
+    math::linear::VectorN<_MD, _T> CODAAPI 
     operator*(const math::linear::MatrixMxN<_MD, _ND, _T>& m, 
               const math::linear::VectorN<_ND, _T>& v)
 {
     return math::linear::VectorN<_MD, _T>(m * v.matrix());
 }
 
-template<size_t _ND, typename _T> math::linear::VectorN<_ND, _T>
+template<size_t _ND, typename _T> math::linear::VectorN<_ND, _T> CODAAPI
     operator*(_T scalar, const math::linear::VectorN<_ND, _T>& v)
 {
     return v * scalar;
@@ -390,7 +390,7 @@ template<size_t _ND, typename _T> math::linear::VectorN<_ND, _T>
 
 
 template<size_t _ND, typename _T> 
-    std::ostream& operator<<(std::ostream& os,
+    std::ostream CODAAPI & operator<<(std::ostream& os,
                              const math::linear::VectorN<_ND, _T>& v)
 {
     for (size_t i = 0; i < _ND; ++i)

@@ -44,7 +44,7 @@ namespace sys
  *  \brief Class for timestamping
  *
  */
-class TimeStamp
+class CODAAPI TimeStamp
 {
 public:
     //! The maximum length of a timestamp

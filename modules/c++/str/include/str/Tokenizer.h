@@ -35,6 +35,7 @@
 
 #include <string>
 #include <vector>
+#include <except/Context.h>
 
 namespace str
 {
@@ -50,7 +51,7 @@ namespace str
  *
  */
 
-class Tokenizer
+class CODAAPI Tokenizer
 {
 public:
     typedef std::vector<std::string> Tokens;

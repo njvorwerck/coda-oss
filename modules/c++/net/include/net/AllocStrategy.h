@@ -58,7 +58,7 @@ namespace net
  *  2) Absolute discretion as to how it uses its factory to produce
  *     handlers
  */
-class AllocStrategy
+class CODAAPI AllocStrategy
 {
 public:
 

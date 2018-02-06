@@ -49,7 +49,7 @@ namespace poly
  *  \return A one dimensional polynomial that fits the curve
  */
  
-template<typename Vector_T> OneD<double> fit(const Vector_T& x,
+template<typename Vector_T> __declspec(dllexport) OneD<double> fit(const Vector_T& x,
                                              const Vector_T& y,
                                              size_t order)
 {

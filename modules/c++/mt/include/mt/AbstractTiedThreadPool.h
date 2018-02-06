@@ -31,7 +31,7 @@
 namespace mt
 {
 template <typename Request_T>
-class AbstractTiedThreadPool : public AbstractThreadPool<Request_T>
+class CODAAPI AbstractTiedThreadPool : public AbstractThreadPool<Request_T>
 {
 
 public:

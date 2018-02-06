@@ -39,7 +39,7 @@ namespace logging
  * \brief DefaultLogger extends the Logger class by providing a default Handler
  * which logs all messages to a StandardStream. This can of course be overridden.
  */
-class DefaultLogger : public Logger
+class CODAAPI DefaultLogger : public Logger
 {
 protected:
     Handler* mDefaultHandler;
@@ -52,10 +52,7 @@ public:
     virtual ~DefaultLogger();
 
     //! Returns the default Handler. You can modify, but do not destroy.
-    virtual Handler* getDefaultHandler()
-    {
-        return mDefaultHandler;
-    }
+    virtual Handler* getDefaultHandler();
 
     static void setDefaultLogLevel(LogLevel logLevel);
 };

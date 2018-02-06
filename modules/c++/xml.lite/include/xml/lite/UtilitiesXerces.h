@@ -105,7 +105,7 @@ typedef xml::lite::AttributeNode  LiteAttributesNode_T;
  *  non-const it takes ownership, and for const memory (assumed
  *  to be owned elsewhere) it makes a deep copy for its own use.
  */
-class XercesLocalString
+class CODAAPI XercesLocalString
 {
 public:
 
@@ -275,7 +275,7 @@ private:
  *  Xerces use as well as Expat (and ultimately MSXML as well)
  *
  */
-class XercesContentHandler : public XercesContentHandlerInterface_T
+class CODAAPI XercesContentHandler : public XercesContentHandlerInterface_T
 {
 public:
     /*!
@@ -391,7 +391,7 @@ protected:
 *  Our error handler implementation, then, simply calls the raise,
 *  and warning macros in the factory.
 */
-class XercesErrorHandler : public XercesErrorHandlerInterface_T
+class CODAAPI XercesErrorHandler : public XercesErrorHandlerInterface_T
 {
 public:
     /*!
@@ -413,7 +413,7 @@ public:
  *  \class XercesContext
  *  \brief This class safely creates and destroys Xerces
  */
-class XercesContext
+class CODAAPI XercesContext
 {
 public:
 
@@ -435,8 +435,8 @@ private:
 }
 
 //! Overloaded output operator for XercesLocalString
-std::ostream& operator<<(std::ostream& os,
-                         const xml::lite::XercesLocalString& ls);
+std::ostream CODAAPI & operator<<(std::ostream& os,
+                                  const xml::lite::XercesLocalString& ls);
 
 
 #endif

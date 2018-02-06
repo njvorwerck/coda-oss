@@ -38,7 +38,7 @@ namespace logging
  *
  * \brief Filter instances are used to perform arbitrary filtering of LogRecords.
  */
-class Filter
+class CODAAPI Filter
 {
 public:
     Filter(std::string name = "") : mName(name){}

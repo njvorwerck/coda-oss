@@ -54,7 +54,7 @@ const static int __last_err__ = 0;
  *  
  */
 
-class Err
+class CODAAPI Err
 {
 public:
 
@@ -131,7 +131,7 @@ protected:
  *  The same operations as in Err for sockets
  *
  */
-class SocketErr : public Err
+class CODAAPI SocketErr : public Err
 {
 public:
 

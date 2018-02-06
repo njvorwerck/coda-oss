@@ -27,6 +27,7 @@
 #include <vector>
 #include <string>
 #include <utility>
+#include <except/Context.h>
 
 namespace sys
 {
@@ -34,7 +35,7 @@ namespace sys
 /**
  * Predicate interface for all entries
  */
-struct FilePredicate : std::unary_function<std::string, bool>
+struct CODAAPI FilePredicate : std::unary_function<std::string, bool>
 {
     virtual ~FilePredicate() {}
     virtual bool operator()(const std::string& entry) const = 0;
@@ -43,7 +44,7 @@ struct FilePredicate : std::unary_function<std::string, bool>
 /**
  * Predicate interface for existance
  */
-struct ExistsPredicate : FilePredicate
+struct CODAAPI ExistsPredicate : FilePredicate
 {
     virtual ~ExistsPredicate() {}
     virtual bool operator()(const std::string& entry) const;
@@ -52,7 +53,7 @@ struct ExistsPredicate : FilePredicate
 /**
  * Predicate that matches files only (no directories)
  */
-struct FileOnlyPredicate: public FilePredicate
+struct CODAAPI FileOnlyPredicate: public FilePredicate
 {
     virtual ~FileOnlyPredicate() {}
     virtual bool operator()(const std::string& entry) const;
@@ -61,7 +62,7 @@ struct FileOnlyPredicate: public FilePredicate
 /**
  * Predicate that matches directories only (no files)
  */
-struct DirectoryOnlyPredicate: public FilePredicate
+struct CODAAPI DirectoryOnlyPredicate: public FilePredicate
 {
     virtual ~DirectoryOnlyPredicate() {}
     virtual bool operator()(const std::string& entry) const;
@@ -70,7 +71,7 @@ struct DirectoryOnlyPredicate: public FilePredicate
 /**
  * Predicate that matches directories only (no files)
  */
-struct FragmentPredicate : public FilePredicate
+struct CODAAPI FragmentPredicate : public FilePredicate
 {
 public:
     FragmentPredicate(const std::string& fragment, bool ignoreCase = true);
@@ -89,7 +90,7 @@ private:
  * splitting routines will only find '.yyy'.  See re::RegexPredicate
  * for a more useful finder.
  */
-class ExtensionPredicate: public FileOnlyPredicate
+class CODAAPI ExtensionPredicate: public FileOnlyPredicate
 {
 public:
     ExtensionPredicate(const std::string& ext, bool ignoreCase = true);
@@ -103,7 +104,7 @@ private:
 /**
  * Predicate that does logical not of another predicate (ie !)
  */
-class NotPredicate : public FilePredicate
+class CODAAPI NotPredicate : public FilePredicate
 {
 public:
     NotPredicate(FilePredicate* filter, bool ownIt = false);
@@ -121,7 +122,7 @@ protected:
  *  The LogicalPredicate class allows you to chain many 
  *  predicates using the logical && or ||
  */
-class LogicalPredicate : public FilePredicate
+class CODAAPI LogicalPredicate : public FilePredicate
 {
 public:
     LogicalPredicate(bool orOperator = true);
@@ -144,7 +145,7 @@ protected:
  *  The FileFinder class allows you to search for 
  *  files/directories in a clean way.
  */
-class FileFinder
+class CODAAPI FileFinder
 {
 public:
     FileFinder() {}

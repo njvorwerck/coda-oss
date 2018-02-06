@@ -51,7 +51,7 @@ namespace mt
  *  }
  *  \endcode
  */
-template <typename T> class CriticalSection
+template <typename T> class CODAAPI CriticalSection
 {
 public:
     //!  Constructor.  Lock the mutex.

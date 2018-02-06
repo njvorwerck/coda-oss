@@ -50,7 +50,7 @@ namespace io
  *  method is based on the pos in the file, and the streamTo() and read()
  *  are file operations
  */
-class FileInputStreamOS : public SeekableInputStream
+class CODAAPI FileInputStreamOS : public SeekableInputStream
 {
 protected:
     sys::File mFile;

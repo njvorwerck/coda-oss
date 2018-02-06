@@ -46,7 +46,7 @@ typedef SingleThreadedAllocStrategy DefaultAllocStrategy;
  *  Has a pure virtual method for handling the clients.
  *
  */
-class NetConnectionServer
+class CODAAPI NetConnectionServer
 {
 public:
     const static int DEFAULT_BACKLOG = 5;

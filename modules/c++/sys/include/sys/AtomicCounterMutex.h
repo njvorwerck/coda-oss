@@ -27,7 +27,7 @@
 
 namespace sys
 {
-class AtomicCounterImpl
+class CODAAPI AtomicCounterImpl
 {
 public:
     typedef size_t ValueType;

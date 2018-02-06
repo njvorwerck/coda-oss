@@ -39,7 +39,7 @@ namespace logging
  * \class MemoryHandler
  * \brief Emits LogRecords to memory.
  */
-class MemoryHandler : public Handler
+class CODAAPI MemoryHandler : public Handler
 {
 
 public:

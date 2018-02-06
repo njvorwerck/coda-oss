@@ -43,7 +43,7 @@ namespace mt
  *  implemented by deriving the performTask function.  The thread 
  *  runs until the program is stopped.
  */
-template <typename Request_T> class WorkerThread : public sys::Thread
+template <typename Request_T> class CODAAPI WorkerThread : public sys::Thread
 {
 public:
     //! Constructor

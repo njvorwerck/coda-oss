@@ -28,8 +28,8 @@ mt::TiedRequestHandler::~TiedRequestHandler()
 {
     if (mAffinityInit)
     {
-	delete mAffinityInit;
-	mAffinityInit = NULL;
+        delete mAffinityInit;
+        mAffinityInit = NULL;
     }
     
 }
@@ -39,7 +39,7 @@ void mt::TiedRequestHandler::initialize()
 {
     if (mAffinityInit)
     {
-	mAffinityInit->initialize();
+        mAffinityInit->initialize();
     }
 }
 void mt::TiedRequestHandler::run()

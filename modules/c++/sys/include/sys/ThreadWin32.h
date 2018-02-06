@@ -62,12 +62,12 @@ namespace sys
 {
 
 
-    inline long getThreadID()
+    inline long CODAAPI getThreadID()
     {
-	return (long)GetCurrentThreadId();
+        return (long)GetCurrentThreadId();
     }
 
-class ThreadWin32 : public ThreadInterface
+class CODAAPI ThreadWin32 : public ThreadInterface
 {
 public:
 

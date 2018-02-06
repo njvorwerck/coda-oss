@@ -46,7 +46,7 @@ namespace dbi
  *   the result set
  *
  */
-class Field
+class CODAAPI Field
 {
 public:
     /*!
@@ -125,7 +125,7 @@ protected:
  *  \brief This class defines a row in a result set
  *  
  */
-class Row
+class CODAAPI Row
 {
 public:
     /*!
@@ -268,7 +268,7 @@ protected:
  *  An abstract result set is the base from which all result sets are
  *  derived.  It provides a common interface.
  */
-class ResultSet
+class CODAAPI ResultSet
 {
 public:
     /*!
@@ -310,7 +310,7 @@ typedef std::auto_ptr< ResultSet > pResultSet;
  * This class provides the base interface for database connections
  * 
  */
-class DatabaseConnection
+class CODAAPI DatabaseConnection
 {
 public:
 
@@ -367,7 +367,7 @@ public:
  * \brief This is responsible for handling exceptions for this API
  * 
  */
-class SQLException : public except::Exception
+class CODAAPI SQLException : public except::Exception
 {
 public:
     /*!

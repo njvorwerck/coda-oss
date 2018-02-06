@@ -43,7 +43,7 @@ namespace logging
  * static getLogger() method. All Loggers are kept as pointers to heap memory,
  * and will get destructed at exit.
  */
-class LoggerManager
+class CODAAPI LoggerManager
 {
 private:
     std::map<std::string, mem::SharedPtr<Logger> > mLoggerMap; //! map for storing Loggers
@@ -87,45 +87,45 @@ typedef mt::Singleton<LoggerManager, true> LoggerFactory;
 //and it will use the root logger that is managed by the factory singleton
 
 //! Logs a message at the DEBUG LogLevel to the 'root' logger
-void debug(const std::string& msg);
+void CODAAPI debug(const std::string& msg);
 //! Logs a message at the INFO LogLevel to the 'root' logger
-void info(const std::string& msg);
+void CODAAPI info(const std::string& msg);
 //! Logs a message at the WARNING LogLevel to the 'root' logger
-void warn(const std::string& msg);
+void CODAAPI warn(const std::string& msg);
 //! Logs a message at the ERROR LogLevel to the 'root' logger
-void error(const std::string& msg);
+void CODAAPI error(const std::string& msg);
 //! Logs a message at the CRITICAL LogLevel to the 'root' logger
-void critical(const std::string& msg);
+void CODAAPI critical(const std::string& msg);
 
 //! Logs an Exception Context at the DEBUG LogLevel to the 'root' logger
-void debug(const except::Context& ctxt);
+void CODAAPI debug(const except::Context& ctxt);
 //! Logs an Exception Context at the INFO LogLevel to the 'root' logger
-void info(const except::Context& ctxt);
+void CODAAPI info(const except::Context& ctxt);
 //! Logs an Exception Context at the WARNING LogLevel to the 'root' logger
-void warn(const except::Context& ctxt);
+void CODAAPI warn(const except::Context& ctxt);
 //! Logs an Exception Context at the ERROR LogLevel to the 'root' logger
-void error(const except::Context& ctxt);
+void CODAAPI error(const except::Context& ctxt);
 //! Logs an Exception Context at the CRITICAL LogLevel to the 'root' logger
-void critical(const except::Context& ctxt);
+void CODAAPI critical(const except::Context& ctxt);
 
 //! Logs a Throwable at the DEBUG LogLevel to the 'root' logger
-void debug(except::Throwable& t);
+void CODAAPI debug(except::Throwable& t);
 //! Logs a Throwable at the INFO LogLevel to the 'root' logger
-void info(except::Throwable& t);
+void CODAAPI info(except::Throwable& t);
 //! Logs a Throwable at the WARNING LogLevel to the 'root' logger
-void warn(except::Throwable& t);
+void CODAAPI warn(except::Throwable& t);
 //! Logs a Throwable at the ERROR LogLevel to the 'root' logger
-void error(except::Throwable& t);
+void CODAAPI error(except::Throwable& t);
 //! Logs a Throwable at the CRITICAL LogLevel to the 'root' logger
-void critical(except::Throwable& t);
+void CODAAPI critical(except::Throwable& t);
 
 //! Sets the LogLevel for the default 'root' logger
 //TODO deprecate this
-void setLogLevel(LogLevel level);
+void CODAAPI setLogLevel(LogLevel level);
 
 //! get a Logger of the given name
-Logger* getLogger(const std::string& name = "root");
-mem::SharedPtr<Logger> getLoggerSharedPtr(const std::string& name = "root");
+Logger CODAAPI * getLogger(const std::string& name = "root");
+mem::SharedPtr<Logger> CODAAPI getLoggerSharedPtr(const std::string& name = "root");
 
 }
 #endif

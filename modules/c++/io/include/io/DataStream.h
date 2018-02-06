@@ -44,7 +44,7 @@ namespace io
  *  is also considered to be Serializable, meaning that it conforms to
  *  the interface for a SerializableConnection
  */
-class DataStream: public io::Serializable
+class CODAAPI DataStream: public io::Serializable
 {
 public:
     //! Default constructor

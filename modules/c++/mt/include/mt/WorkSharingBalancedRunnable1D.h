@@ -60,7 +60,7 @@ typedef std::vector<mem::SharedPtr<sys::AtomicCounter> > SharedAtomicCounterVec;
  *
  */
 template <typename OpT>
-class WorkSharingBalancedRunnable1D : public sys::Runnable
+class CODAAPI WorkSharingBalancedRunnable1D : public sys::Runnable
 {
 public:
 
@@ -157,9 +157,9 @@ private:
  *  \param op Functor to use
  */
 template <typename OpT>
-void runWorkSharingBalanced1D(size_t numElements,
-                              size_t numThreads,
-                              const OpT& op)
+void CODAAPI runWorkSharingBalanced1D(size_t numElements,
+                                      size_t numThreads,
+                                      const OpT& op)
 {
     std::vector<size_t> threadPoolEndElements;
     SharedAtomicCounterVec threadPoolCounters;
@@ -225,9 +225,9 @@ void runWorkSharingBalanced1D(size_t numElements,
  *  \param ops Vector of functors to use
  */
 template <typename OpT>
-void runWorkSharingBalanced1D(size_t numElements,
-                              size_t numThreads,
-                              const std::vector<OpT>& ops)
+void CODAAPI runWorkSharingBalanced1D(size_t numElements,
+                                      size_t numThreads,
+                                      const std::vector<OpT>& ops)
 {
     if (ops.size() != numThreads)
     {
@@ -302,9 +302,9 @@ void runWorkSharingBalanced1D(size_t numElements,
  *  \param op Functor to use
  */
 template <typename OpT>
-void runWorkSharingBalanced1DWithCopies(size_t numElements,
-                                        size_t numThreads,
-                                        const OpT& op)
+void CODAAPI runWorkSharingBalanced1DWithCopies(size_t numElements,
+                                                size_t numThreads,
+                                                const OpT& op)
 {
     const std::vector<OpT> ops(numThreads, op);
     runWorkSharingBalanced1D(numElements, numThreads, ops);

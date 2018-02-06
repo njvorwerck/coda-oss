@@ -37,7 +37,7 @@ enum
     EXIT_USAGE = 1, EXIT_VERSION = 2
 };
 
-class ArgumentParser
+class CODAAPI ArgumentParser
 {
 public:
     ArgumentParser();

@@ -40,7 +40,7 @@ namespace mt
  *  This class is really only used if you are using a BasicThreadPool.
  *  
  */
-class GenericRequestHandler : public sys::Runnable
+class CODAAPI GenericRequestHandler : public sys::Runnable
 {
 public:
     //! Constructor

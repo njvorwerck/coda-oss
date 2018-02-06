@@ -39,7 +39,7 @@ namespace except
  * \class Trace
  * \brief Holds stack of context information
  */
-class Trace
+class CODAAPI Trace
 {
 public:
     /*!
@@ -105,8 +105,8 @@ private:
     //! The name of the internal stack wrapped by the Trace
     std::list<Context> mStack;
 };
+std::ostream CODAAPI & operator<<(std::ostream& os, const Trace& t);
 }
 
-std::ostream& operator<<(std::ostream& os, const except::Trace& t);
 
 #endif

@@ -32,7 +32,7 @@
 
 namespace sys
 {
-class SemaphoreIrix : public SemaphoreInterface
+class CODAAPI SemaphoreIrix : public SemaphoreInterface
 {
 public:
     SemaphoreIrix(unsigned int count = 0);

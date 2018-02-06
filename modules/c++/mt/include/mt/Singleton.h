@@ -69,7 +69,7 @@ namespace mt
  * memory address.
  * 
  */
-template <bool AutoDestroy> struct SingletonAutoDestroyer
+template <bool AutoDestroy> struct CODAAPI SingletonAutoDestroyer
 {
     static void registerAtExit(void (*)(void))
     {
@@ -77,7 +77,7 @@ template <bool AutoDestroy> struct SingletonAutoDestroyer
     }
 };
 
-template <> struct SingletonAutoDestroyer<true>
+template <> struct CODAAPI SingletonAutoDestroyer<true>
 {
     static void registerAtExit(void (*function)(void))
     {
@@ -96,7 +96,7 @@ template <> struct SingletonAutoDestroyer<true>
 };
 
 template<typename T, bool AutoDestroy = false>
-class Singleton
+class CODAAPI Singleton
 {
 public:
     /*!

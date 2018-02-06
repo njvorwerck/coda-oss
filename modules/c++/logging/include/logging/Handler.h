@@ -45,7 +45,7 @@ namespace logging
  * The Handler class is abstract. Sub-classes handle LogRecord* objects,
  * emitting the information in a user-defined manner.
  */
-class Handler : public Filterer
+class CODAAPI Handler : public Filterer
 {
 public:
     /*!

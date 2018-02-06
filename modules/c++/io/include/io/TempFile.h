@@ -32,7 +32,7 @@ namespace io
  * RAII object for a temporary file that gets deleted
  * upon object destruction
  */
-class TempFile
+class CODAAPI TempFile
 {
 public:
     /*!

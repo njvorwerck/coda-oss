@@ -44,7 +44,7 @@ class ThreadIrix;
 class ConditionVarIrix;
 
 
-class SyncInterface
+class CODAAPI SyncInterface
 {
 public:
     SyncInterface()
@@ -69,7 +69,7 @@ public:
 
 };
 
-class SyncFactoryIrix : public SyncInterface
+class CODAAPI SyncFactoryIrix : public SyncInterface
 {
 protected:
 class SyncImplIrix : public SyncInterface

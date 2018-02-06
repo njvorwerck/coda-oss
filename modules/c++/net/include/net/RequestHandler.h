@@ -36,7 +36,7 @@ namespace net
  *
  *
  */
-class RequestHandler
+class CODAAPI RequestHandler
 {
 public:
     //!  Constructor
@@ -58,7 +58,7 @@ public:
     virtual void operator()(net::NetConnection* conn) = 0;
 };
 
-class RequestHandlerFactory
+class CODAAPI RequestHandlerFactory
 {
 public:
     RequestHandlerFactory()
@@ -70,7 +70,7 @@ public:
     virtual net::RequestHandler* create() = 0;
 };
 
-template<typename ReqHandler_T> class DefaultRequestHandlerFactory: public RequestHandlerFactory
+template<typename ReqHandler_T> class CODAAPI DefaultRequestHandlerFactory: public RequestHandlerFactory
 {
 public:
     DefaultRequestHandlerFactory()

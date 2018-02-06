@@ -29,7 +29,7 @@
 
 namespace plugin
 {
-class ErrorHandler
+class CODAAPI ErrorHandler
 {
 public:
     ErrorHandler() {}
@@ -47,7 +47,7 @@ public:
     virtual void onPluginError(except::Context& c) = 0;
 };
 
-class DefaultErrorHandler : public ErrorHandler
+class CODAAPI DefaultErrorHandler : public ErrorHandler
 {
 public:
     DefaultErrorHandler(logging::LoggerPtr logger = logging::LoggerPtr());

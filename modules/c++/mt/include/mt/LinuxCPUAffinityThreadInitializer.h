@@ -38,12 +38,12 @@
 
 namespace mt
 {
-    class LinuxCPUAffinityThreadInitializer : public mt::CPUAffinityThreadInitializer
-    {	
-	cpu_set_t mCPU;
+    class CODAAPI LinuxCPUAffinityThreadInitializer : public mt::CPUAffinityThreadInitializer
+    {
+    cpu_set_t mCPU;
     public:
-	LinuxCPUAffinityThreadInitializer(const cpu_set_t& cpu);
-	void initialize();
+    LinuxCPUAffinityThreadInitializer(const cpu_set_t& cpu);
+    void initialize();
     };
 }
     

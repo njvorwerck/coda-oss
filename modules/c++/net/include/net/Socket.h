@@ -57,7 +57,7 @@ enum { TCP_PROTO = SOCK_STREAM, UDP_PROTO = SOCK_DGRAM };
  *  users may find the functionality of NetConnection more to their liking.
  *
  */
-class Socket
+class CODAAPI Socket
 {
 public:
 

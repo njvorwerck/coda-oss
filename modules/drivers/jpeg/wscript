@@ -128,6 +128,7 @@ def build(bld):
                       env=env.derive(),
                       name='JPEG',
                       targets_to_add=[])
+        '''
         if env['LIB_TYPE'] == 'shlib':
             jpeglib.targets_to_add.append(
                 bld(features='c cshlib add_targets',
@@ -143,6 +144,7 @@ def build(bld):
                       env=env.derive(),
                       name='JPEG_SHARED',
                       targets_to_add=[]))
+        '''
 
         if env['install_libs']:
             jpeglib.install_path = env['install_libdir']

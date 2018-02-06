@@ -31,7 +31,7 @@ namespace io
 /**
  * An OutputStream that keeps track of the number of bytes written to the stream.
  */
-class CountingOutputStream: public ProxyOutputStream
+class CODAAPI CountingOutputStream: public ProxyOutputStream
 {
 public:
     CountingOutputStream(OutputStream *proxy, bool ownPtr = false) :

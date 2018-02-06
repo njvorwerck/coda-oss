@@ -29,7 +29,7 @@
 
 namespace io
 {
-class ProxyInputStream: public InputStream
+class CODAAPI ProxyInputStream: public InputStream
 {
 public:
     ProxyInputStream(InputStream *proxy, bool ownPtr = false) :
@@ -70,7 +70,7 @@ protected:
 /**
  * Proxies to the given OutputStream.
  */
-class ProxyOutputStream: public OutputStream
+class CODAAPI ProxyOutputStream: public OutputStream
 {
 public:
     ProxyOutputStream(OutputStream *proxy, bool ownPtr = false) :
@@ -117,7 +117,7 @@ protected:
 /**
  * An output stream that can be enabled/disabled (toggled).
  */
-class ToggleOutputStream: public io::ProxyOutputStream
+class CODAAPI ToggleOutputStream: public io::ProxyOutputStream
 {
 public:
     ToggleOutputStream(io::OutputStream *output = NULL, bool ownPtr = false) :

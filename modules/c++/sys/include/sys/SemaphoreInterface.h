@@ -29,7 +29,7 @@
 
 namespace sys
 {
-class SemaphoreInterface
+class CODAAPI SemaphoreInterface
 {
 
 public:

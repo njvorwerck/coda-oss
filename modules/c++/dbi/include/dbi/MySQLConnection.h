@@ -41,7 +41,7 @@ namespace dbi
  *  \class MySQLResultSet
  *  \brief This class defines the MySQL interface for a result set
  */
-class MySQLResultSet : public ResultSet
+class CODAAPI MySQLResultSet : public ResultSet
 {
 public:
     /*!
@@ -89,7 +89,7 @@ private:
  * This class provides the basis for MySQL connections
  * 
  */
-class MySQLConnection : public DatabaseConnection
+class CODAAPI MySQLConnection : public DatabaseConnection
 {
 public:
 

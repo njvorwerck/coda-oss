@@ -36,7 +36,7 @@ namespace net
  *         NOTE: It seems this is not always required, but is probably good
  *         practice.
  */
-struct CurlInit
+struct CODAAPI CurlInit
 {
     /*
      *  \func Constructor

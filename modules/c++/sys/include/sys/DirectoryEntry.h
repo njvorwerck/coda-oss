@@ -31,7 +31,7 @@
 
 namespace sys
 {
-class DirectoryEntry
+class CODAAPI DirectoryEntry
 {
 public:
     class Iterator;
@@ -150,10 +150,10 @@ private:
 
 }
 
-bool operator==(const sys::DirectoryEntry::Iterator& lhs,
-                const sys::DirectoryEntry::Iterator& rhs);
+bool CODAAPI operator==(const sys::DirectoryEntry::Iterator& lhs,
+                        const sys::DirectoryEntry::Iterator& rhs);
 
-bool operator!=(const sys::DirectoryEntry::Iterator& lhs,
-                const sys::DirectoryEntry::Iterator& rhs);
+bool CODAAPI operator!=(const sys::DirectoryEntry::Iterator& lhs,
+                        const sys::DirectoryEntry::Iterator& rhs);
 
 #endif

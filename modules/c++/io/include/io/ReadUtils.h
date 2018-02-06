@@ -27,6 +27,7 @@
 #include <vector>
 
 #include <sys/Conf.h>
+#include <except/Context.h>
 
 namespace io
 {
@@ -38,8 +39,8 @@ namespace io
  * \param pathname Pathname of the file to read in
  * \param buffer Raw bytes of the file
  */
-void readFileContents(const std::string& pathname,
-                      std::vector<sys::byte>& buffer);
+void CODAAPI readFileContents(const std::string& pathname,
+                              std::vector<sys::byte>& buffer);
 
 /*!
  * Reads the contents of a file into a string.  The file is assumed to be a
@@ -48,7 +49,7 @@ void readFileContents(const std::string& pathname,
  * \param pathname Pathname of the file to read in
  * \param[out] str Contents of the file
  */
-void readFileContents(const std::string& pathname, std::string& str);
+void CODAAPI readFileContents(const std::string& pathname, std::string& str);
 
 /*!
  * Reads the contents of a file into a string.  The file is assumed to be a
@@ -58,13 +59,8 @@ void readFileContents(const std::string& pathname, std::string& str);
  *
  * \return Contents of the file
  */
-inline
-std::string readFileContents(const std::string& pathname)
-{
-    std::string str;
-    readFileContents(pathname, str);
-    return str;
-}
+std::string CODAAPI readFileContents(const std::string& pathname);
+
 }
 
 #endif

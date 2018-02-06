@@ -42,7 +42,7 @@ namespace sys
  *  Use NSPR thread package to make platform independent 
  *  threading
  */
-class MutexNSPR : public MutexInterface<PRLock *>
+class CODAAPI MutexNSPR : public MutexInterface<PRLock *>
 {
 public:
     //!  Constructor.  Create a new mutex

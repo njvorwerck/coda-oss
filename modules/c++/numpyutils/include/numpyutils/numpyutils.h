@@ -27,6 +27,7 @@
 #include <Python.h>
 #include <numpy/arrayobject.h>
 #include <types/RowCol.h>
+#include <except/Context.h>
 #include <vector>
 
 namespace numpyutils
@@ -36,14 +37,14 @@ namespace numpyutils
  * \param pyObject object to test
  * \throws except::Exception if pyObject isn't an instance of PyArray
  */
-void verifyArray(PyObject *pyObject);
+void CODAAPI verifyArray(PyObject *pyObject);
 
 /* Verifies that the input object element type matches the input typeNum)
  * \param pyObject Instance of PyArrayObject to test
  * \param typeNum python type number of desired type (see python API docs)
  * \throws except::Exception if pyObject's typeNum != typeNum
  */
-void verifyType(PyObject* pyObject, int typeNum);
+void CODAAPI verifyType(PyObject* pyObject, int typeNum);
 
 /*! Verifies both that the input object is a PyArray and that its element type
  *      matches the input typeNume
@@ -51,28 +52,28 @@ void verifyType(PyObject* pyObject, int typeNum);
  * \param typeNum desired python type num
  * \throws except::Exception if pyObject isn't a PyArray or if types do not match
  */
-void verifyArrayType(PyObject *pyObject, int typeNum);
+void CODAAPI verifyArrayType(PyObject *pyObject, int typeNum);
 
 /*! Returns array dimensions and enforces a dimension check of two
  * \param pyArrayObject array object to inspect
  * \returns read only pointer to the dimensions of array
  * \throws except::Exception if not a 2D array
  */
-const npy_intp* const getDimensions(PyObject* pyArrayObject);
+const npy_intp CODAAPI * const getDimensions(PyObject* pyArrayObject);
 
 /*! Variant returning types::RowCol<size_t> version of dimensions
  * \param pyArrayObject array object to inspect
  * \returns row col of dimensions
  * \throws except::Exception if not a 2D array
  */
-types::RowCol<size_t> getDimensionsRC(PyObject* pyArrayObject);
+types::RowCol<size_t> CODAAPI getDimensionsRC(PyObject* pyArrayObject);
 
 /*! Verifies that the objects are of the same dimensions
  * \param lhs comparison object
  * \param rhs comparison object
  * \throws except::Exception if objects dimensions don't match
  * */
-void verifyObjectsAreOfSameDimensions(PyObject* lhs, PyObject* rhs);
+void CODAAPI verifyObjectsAreOfSameDimensions(PyObject* lhs, PyObject* rhs);
 
 /*!
  * Helper function used to either verify that an object is either
@@ -84,7 +85,7 @@ void verifyObjectsAreOfSameDimensions(PyObject* lhs, PyObject* rhs);
  * \throws except::Exception if pyObject is not None and doesn't match
  *              specified parameters
  */
-void createOrVerify(PyObject*& pyObject, int typeNum, const types::RowCol<size_t>& dims);
+void CODAAPI createOrVerify(PyObject*& pyObject, int typeNum, const types::RowCol<size_t>& dims);
 
 /*!
  * Verifies Array Type and TypeNum for input and output.  If output
@@ -98,11 +99,11 @@ void createOrVerify(PyObject*& pyObject, int typeNum, const types::RowCol<size_t
  *                           if output isn't None and doesn't match input
  *                                type and dims
  */
-void prepareInputAndOutputArray(PyObject* pyInObject,
-                                PyObject*& pyOutObject,
-                                int inputTypeNum,
-                                int outputTypeNum,
-                                types::RowCol<size_t> dims);
+void CODAAPI prepareInputAndOutputArray(PyObject* pyInObject,
+                                        PyObject*& pyOutObject,
+                                        int inputTypeNum,
+                                        int outputTypeNum,
+                                        types::RowCol<size_t> dims);
 
 /*!
  * Verifies Array Type and TypeNum for input and output.  If output
@@ -116,10 +117,10 @@ void prepareInputAndOutputArray(PyObject* pyInObject,
  *                           if output isn't None and doesn't match input
  *                                type and dims
  */
-void prepareInputAndOutputArray(PyObject* pyInObject,
-                                PyObject*& pyOutObject,
-                                int inputTypeNum,
-                                int outputTypeNum);
+void CODAAPI prepareInputAndOutputArray(PyObject* pyInObject,
+                                        PyObject*& pyOutObject,
+                                        int inputTypeNum,
+                                        int outputTypeNum);
 
 /*!
  * Copy a data buffer into a 1/2D Numpy array
@@ -129,7 +130,7 @@ void prepareInputAndOutputArray(PyObject* pyInObject,
  * \param data the data to be wrapped
  * \return a numpy array with specified dimension and type
  */
-PyObject* toNumpyArray(size_t numRows, size_t numColumns, int typenum,
+PyObject CODAAPI* toNumpyArray(size_t numRows, size_t numColumns, int typenum,
         void* data);
 
 /*!
@@ -140,7 +141,7 @@ PyObject* toNumpyArray(size_t numRows, size_t numColumns, int typenum,
  * \return a numpy array with specified dimension and type
  */
 
-PyObject* toNumpyArray(size_t numColumns, int typenum,
+PyObject CODAAPI * toNumpyArray(size_t numColumns, int typenum,
         const std::vector<void*>& data);
 
 /*!
@@ -148,14 +149,14 @@ PyObject* toNumpyArray(size_t numColumns, int typenum,
  * \param pyInObject array to get data buffer of
  * \returns a pointer to the array's buffer interpreted as an array of type char*
  * */
-char* getDataBuffer(PyArrayObject* pyInObject);
+char CODAAPI * getDataBuffer(PyArrayObject* pyInObject);
 
 /*! Extract PyArray Buffer as raw array of type T*
  * \param pyObject object to turn into raw pointer
  * \returns a pointer to the array's buffer interpreted as an array of type T
  */
 template<typename T>
-T* getBuffer(PyObject* pyObject)
+T CODAAPI * getBuffer(PyObject* pyObject)
 {
     return reinterpret_cast<T*>(
             getDataBuffer(
@@ -167,7 +168,7 @@ T* getBuffer(PyObject* pyObject)
  * If a problem occurred, print error message and throw exception
  * \param object Array to check
  */
-void verifyNewPyObject(PyObject* object);
+void CODAAPI verifyNewPyObject(PyObject* object);
 
 }
 

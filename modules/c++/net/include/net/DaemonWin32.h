@@ -13,7 +13,7 @@ namespace net
  *  \class DaemonWin32
  *  \brief Windows implementation of daemon class
  */
-class DaemonWin32 : public DaemonInterface
+class CODAAPI DaemonWin32 : public DaemonInterface
 {
 public:
     DaemonWin32() : DaemonInterface() {}

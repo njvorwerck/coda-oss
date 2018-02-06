@@ -43,7 +43,7 @@
 namespace sys
 {
 
-template <typename Pid_T> class ProcessInterface : public sys::Runnable
+template <typename Pid_T> class CODAAPI ProcessInterface : public sys::Runnable
 {
 public:
     enum { THE_CHILD = 0 };

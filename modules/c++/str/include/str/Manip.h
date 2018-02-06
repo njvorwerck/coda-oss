@@ -34,7 +34,7 @@ namespace str
  *  Trim the white space off the back and front of a string
  *  @param  s  String to trim
  */
-void trim(std::string& s);
+void CODAAPI trim(std::string& s);
 
 /**
  *  Checks the end of s with match
@@ -42,7 +42,7 @@ void trim(std::string& s);
  *  @param  match  String to compare with
  *  @return true if it matches, otherwise false
  */
-bool endsWith(const std::string& s, const std::string& match);
+bool CODAAPI endsWith(const std::string& s, const std::string& match);
 
 /**
  *  Checks the start of s with match
@@ -50,7 +50,7 @@ bool endsWith(const std::string& s, const std::string& match);
  *  @param  s  String to compare with
  *  @return true if it matches, otherwise false
  */
-bool startsWith(const std::string& s, const std::string& match);
+bool CODAAPI startsWith(const std::string& s, const std::string& match);
 
 /**
  *  finds the first instance of "search" and
@@ -63,10 +63,10 @@ bool startsWith(const std::string& s, const std::string& match);
  *  @param  start   starting position to start search
  *  @return position of first find, str.length() if not found
  */
-size_t replace(std::string& str, 
-               const std::string& search,
-               const std::string& replace,
-               size_t start = 0);
+size_t CODAAPI replace(std::string& str, 
+                       const std::string& search,
+                       const std::string& replace,
+                       size_t start = 0);
 
 /**
  *  finds all instances of "search" and
@@ -75,56 +75,56 @@ size_t replace(std::string& str,
  *  @param  search  String to search for
  *  @param  replace String to replace with
  */
-void replaceAll(std::string& string, 
-                const std::string& search,
-                const std::string& replace);
+void CODAAPI replaceAll(std::string& string, 
+                        const std::string& search,
+                        const std::string& replace);
 
 /**
  * Returns true if the string contains the match
  */
-bool contains(const std::string& str, const std::string& match);
+bool CODAAPI contains(const std::string& str, const std::string& match);
 
 
 /**
  * Returns true if the string contains only letters.
  */
-bool isAlpha(const std::string& s);
+bool CODAAPI isAlpha(const std::string& s);
 
 /**
  * Returns true if the string contains only letters and spaces.
  */
-bool isAlphaSpace(const std::string& s);
+bool CODAAPI isAlphaSpace(const std::string& s);
 
 /**
  * Returns true if the string contains only digits. This does not include
  * decimal points.
  */
-bool isNumeric(const std::string& s);
+bool CODAAPI isNumeric(const std::string& s);
 
 /**
  * Returns true if the string contains only digits and spaces.
  */
-bool isNumericSpace(const std::string& s);
+bool CODAAPI isNumericSpace(const std::string& s);
 
 /**
  * Returns true if the string contains only whitespace characters (or empty).
  */
-bool isWhitespace(const std::string& s);
+bool CODAAPI isWhitespace(const std::string& s);
 
 /**
  * Returns true if the string contains only letters and digits.
  */
-bool isAlphanumeric(const std::string& s);
+bool CODAAPI isAlphanumeric(const std::string& s);
 
 /**
  * Returns true if the string contains only ASCII printable characters.
  */
-bool isAsciiPrintable(const std::string& s);
+bool CODAAPI isAsciiPrintable(const std::string& s);
 
 /**
  * Returns true if the string contains only the given allowed characters.
  */
-bool containsOnly(const std::string& s, const std::string& validChars);
+bool CODAAPI containsOnly(const std::string& s, const std::string& validChars);
 
 /**
  *  Splits a string based on a splitter string. Similar to tokenization, except
@@ -133,24 +133,24 @@ bool containsOnly(const std::string& s, const std::string& validChars);
  *  @param  splitter  String to split upon
  *  @return vector of strings
  */
-std::vector<std::string> split(const std::string& s,
-                               const std::string& splitter = " ",
-                               size_t maxSplit = std::string::npos);
+std::vector<std::string> CODAAPI split(const std::string& s,
+                                       const std::string& splitter = " ",
+                                       size_t maxSplit = std::string::npos);
 
 //! Uses std::transform to convert all chars to lower case
-void lower(std::string& s);
+void CODAAPI lower(std::string& s);
 
 //! Uses std::transform to convert all chars to upper case
-void upper(std::string& s);
+void CODAAPI upper(std::string& s);
 
 /*!
  * Replaces any characters that are invalid in XML (&, <, >, ', ") with their
  * escaped counterparts
  */
-void escapeForXML(std::string& str);
+void CODAAPI escapeForXML(std::string& str);
 
 template<typename T>
-std::string join(std::vector<T> toks, std::string with)
+std::string CODAAPI join(std::vector<T> toks, std::string with)
 {
     if (toks.empty())
         return "";

@@ -74,7 +74,7 @@ struct MustBeSignedType<true>
  *  http://www.ddj.com/architect/201806315.
  */
 template <typename T>
-class ConvexHull
+class CODAAPI ConvexHull
 {
 public:
     typedef types::RowCol<T> RowCol;

@@ -30,8 +30,6 @@
 #include "tiff/GenericType.h"
 #include "tiff/IFDEntry.h"
 
-const unsigned short tiff::ImageWriter::CHUNK_SIZE = 8192;
-
 void tiff::ImageWriter::putData(const unsigned char *buffer,
                                 sys::Uint32_T numElementsToWrite)
 {

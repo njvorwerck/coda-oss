@@ -51,7 +51,7 @@ namespace lite
  *  internal organs.  We have a URI, a QName, and a local part
  *  as well.  We also need a value, of course.
  */
-class AttributeNode
+class CODAAPI AttributeNode
 {
 public:
 
@@ -147,7 +147,7 @@ protected:
  *  this data structure everywhere.  That also allows us to
  *  simplify future dom classes
  */
-class Attributes
+class CODAAPI Attributes
 {
 public:
 

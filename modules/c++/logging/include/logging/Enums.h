@@ -40,7 +40,7 @@ namespace logging
  *
  *  Enumeration used to represent LogLevels
  */
-struct LogLevel
+struct CODAAPI LogLevel
 {
     //! The enumerations allowed
     enum

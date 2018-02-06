@@ -60,7 +60,7 @@ namespace net
  * different entity than the object itself, and to serialize to files as well
  * as just sockets. 
  */
-class SerializableConnection
+class CODAAPI SerializableConnection
 {
 public:
     /*!

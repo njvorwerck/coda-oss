@@ -49,7 +49,7 @@
 
 namespace sys
 {
-class ProcessUnix : public ProcessInterface< Pid_T >
+class CODAAPI ProcessUnix : public ProcessInterface< Pid_T >
 {
 public:
     ProcessUnix()

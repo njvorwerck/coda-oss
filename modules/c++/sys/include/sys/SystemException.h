@@ -41,7 +41,7 @@ namespace sys
  *  \class SystemException
  *  \brief An OS-independent exception class
  */
-class SystemException : public except::Exception
+class CODAAPI SystemException : public except::Exception
 {
 public:
 
@@ -110,7 +110,7 @@ public:
  *  This class is identical to SystemException, except that it is
  *  an error, not an exception
  */
-class SystemError : public except::Error
+class CODAAPI SystemError : public except::Error
 {
 public:
 

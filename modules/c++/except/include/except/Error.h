@@ -62,7 +62,7 @@ namespace except
  * the manner that you handle an exception.  For this reason, the distinction is
  * made
  */
-class Error : public Throwable
+class CODAAPI Error : public Throwable
 {
 public:
     /*!

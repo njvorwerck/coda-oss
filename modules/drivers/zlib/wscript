@@ -80,8 +80,12 @@ def build(bld):
         defs = env['DEFINES']
         if env['CC_NAME'] == 'msvc' and env['LIB_TYPE'] == 'shlib':
             defs += ['ZLIB_DLL']
+            defs += ['ZLIB_WINAPI']
 
-        zlib = bld(features='c cstlib add_targets',
+        libtype = 'stlib'
+        if env['LIB_TYPE'] == 'shlib':
+            libtype = 'shlib'
+        zlib = bld(features='c c%s add_targets' % libtype,
                    includes=['.'],
                    export_includes='.',
                    target='z',
@@ -92,7 +96,7 @@ def build(bld):
                    env=env.derive(),
                    name='ZIP',
                    targets_to_add=[])
-    
+        '''
         if env['LIB_TYPE'] == 'shlib':
             zlib.targets_to_add.append(
                 bld(features='c cshlib add_targets',
@@ -106,6 +110,8 @@ def build(bld):
                    env=env.derive(),
                    name='ZIP_SHARED',
                    targets_to_add=[]))
+        '''
+       
 
         # Minizip is included in the zlib tarball but is not built when you
         # just run configure.  Beyond that, when you build minizip, you just

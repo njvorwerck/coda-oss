@@ -30,7 +30,7 @@
 namespace sys
 {
 // Implemented from boost/smart_ptr/detail/atomic_count_solaris.hpp
-class AtomicCounterImpl
+class CODAAPI AtomicCounterImpl
 {
 public:
     typedef Uint32_T ValueType;

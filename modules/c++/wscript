@@ -1,10 +1,14 @@
 import os
+from waflib import Options
 
 def options(opt):
     opt.recurse()
 
 def configure(conf):
     conf.env.append_value('INCLUDES_UNITTEST', os.path.join(conf.path.abspath(), 'include'))
+    if Options.options.shared_libs:
+        conf.env.append_value('INCLUDE', os.path.join(conf.path.abspath(), 'include'))
+        conf.define("CODA_SHARED", True)
     conf.recurse()
 
 def build(bld):

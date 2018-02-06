@@ -45,7 +45,7 @@ namespace net
  *
  */
 
-class RequestHandlerThread : public sys::Thread
+class CODAAPI RequestHandlerThread : public sys::Thread
 {
     RequestHandler* mRequestHandler;
     NetConnection* mConnection;
@@ -84,7 +84,7 @@ public:
  *  request is offered its own thread.
  *
  */
-class PerRequestThreadAllocStrategy : public AllocStrategy
+class CODAAPI PerRequestThreadAllocStrategy : public AllocStrategy
 {
 public:
     //!  Constructor

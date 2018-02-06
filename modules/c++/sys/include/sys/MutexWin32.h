@@ -31,7 +31,7 @@
 
 namespace sys
 {
-class MutexWin32 : public MutexInterface
+class CODAAPI MutexWin32 : public MutexInterface
 {
 public:
     //! \todo Add string name option

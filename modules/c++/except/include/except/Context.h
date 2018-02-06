@@ -26,6 +26,16 @@
 
 #include <string>
 #include <iostream>
+#ifdef WIN32
+/*  Negotiate the meaning of NRTAPI, NRTPROT (for public and protected)  */
+#      if defined(CODA_SHARED)
+#          define CODAAPI __declspec(dllexport)
+#      else 
+#          define CODAAPI __declspec(dllimport)
+#      endif
+#else                     /* Static library */
+#      define CODAAPI
+#endif
 
 /*!
  * \file
@@ -42,7 +52,7 @@ namespace except
  * This class contains information such as the file, line, 
  * function and time
  */
-class Context
+class CODAAPI Context
 {
 public:
 
@@ -130,9 +140,9 @@ public:
     //! The line number where the exception was thrown
     int mLine;
 };
-
+std::ostream CODAAPI & operator<< (std::ostream& os, const Context& c);
 }
 
-std::ostream& operator<< (std::ostream& os, const except::Context& c);
+
 
 #endif

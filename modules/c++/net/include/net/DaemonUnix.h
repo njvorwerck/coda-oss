@@ -14,7 +14,7 @@ namespace net
  *  \class DaemonUnix
  *  \brief Unix implementation of daemon class
  */
-class DaemonUnix : public DaemonInterface
+class CODAAPI DaemonUnix : public DaemonInterface
 {
 public:
     DaemonUnix();

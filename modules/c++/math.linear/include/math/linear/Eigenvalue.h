@@ -80,7 +80,7 @@ namespace linear
  *   RealT must be a real (non-complex) type
  */
 template<typename RealT>
-class Eigenvalue
+class CODAAPI Eigenvalue
 {
 public:
     /*

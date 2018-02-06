@@ -46,7 +46,7 @@ namespace io
  *  This object has a known derived type SOAPMessage, which is concretely
  *  defined to handle SOAP objects
  */
-class Serializable
+class CODAAPI Serializable
 {
 public:
     //! Default constructor

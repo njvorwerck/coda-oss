@@ -16,6 +16,7 @@ def configure(conf):
     if xmlLayer == 'xerces' :
 
         xercesUselibs = XERCES_USELIBS
+
         if sys.platform == 'win32':
             # Xerces requires this standard Windows library
             conf.check_cc(lib='advapi32', uselib_store='ADVAPI32')
@@ -135,7 +136,7 @@ def configure(conf):
                     conf.define('XERCES_USE_NETACCESSOR_WINSOCK', 1)
                     conf.define('XERCES_USE_TRANSCODER_WINDOWS', 1)
                     conf.define('XERCES_PATH_DELIMITER_BACKSLASH', 1)
-
+                    
                     conf.define('XERCES_S16BIT_INT', '__int16', quote=False)
                     conf.define('XERCES_S32BIT_INT', '__int32', quote=False)
                     conf.define('XERCES_S64BIT_INT', '__int32', quote=False)
@@ -203,7 +204,10 @@ def configure(conf):
                 conf.define('XERCES_NEW_IOSTREAMS', 1)
                 conf.define('XERCES_LSTRSUPPORT', 1)
                 conf.define('HAVE_BOOL', 1)
-
+                if conf.env['LIB_TYPE'] == 'shlib' and sys.platform == 'win32':
+                    conf.define('XERCES_PLATFORM_EXPORT', '__declspec(dllexport)', quote=False)
+                    conf.define('XERCES_PLATFORM_IMPORT', '__declspec(dllimport)', quote=False)
+                    conf.define('DLL_EXPORT', 1)
                 if 'HAVE_NL_TYPES_H=1' in conf.env['DEFINES'] :
                     conf.define('HAVE_CATCLOSE', 1)
                     conf.define('HAVE_CATGETS', 1)
@@ -287,7 +291,7 @@ def build(bld):
             relativePath = root.replace(xercesDir + os.sep, "")
             for file in files :
                 if file.endswith('.cpp') and 'Test' not in file and file not in EXCLUDES or \
-                   sys.platform != 'win32' and dirs == ['xercesc'] and file.endswith('.c') :
+                  sys.platform != 'win32' and dirs == ['xercesc'] and file.endswith('.c') :
                     sources.append(join(relativePath, file))
                 elif file.endswith('.h') or file.endswith('.hpp') or file.endswith('.c') :
                     headers.append(join(relativePath, file))
@@ -296,13 +300,19 @@ def build(bld):
         # build the library
         libType = env['LIB_TYPE'] or 'stlib'
         xercesDefines = env['DEFINES'] + ['HAVE_CONFIG_H']
-        xerces = bld(features='c cstlib add_targets',
+
+        xerces = bld(features='c c%s' % libType,
                      source=sources,
-                     includes=['.', 'src'], export_includes=['src'],
-                     target='xerces-c', path=xercesNode,
-                     uselib=xercesUselibs, name='XML', env=env.derive(),
+                     includes=['.', 'src'], 
+                     export_includes=['src'],
+                     target='xerces-c', 
+                     path=xercesNode,
+                     uselib=xercesUselibs, 
+                     name='XML', 
+                     env=env.derive(),
                      defines=xercesDefines,
                      targets_to_add=[])
+        '''
         if libType == 'shlib':
             xerces.targets_to_add.append(
                 bld(features='c cshlib add_targets',
@@ -312,8 +322,13 @@ def build(bld):
                      uselib=xercesUselibs, name='XML_SHARED', env=env.derive(),
                      defines=xercesDefines,
                      targets_to_add=[]))
+        '''
+        
+
         if libType == 'stlib':
             xerces.export_defines='XERCES_STATIC_LIBRARY'
+        else:
+            xerces.export_defines = 'DLL_EXPORT'
 
         if env['install_libs']:
             xerces.install_path = env['install_libdir']

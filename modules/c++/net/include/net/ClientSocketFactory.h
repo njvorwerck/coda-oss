@@ -49,7 +49,7 @@ namespace net
  *
  *
  */
-class ClientSocketFactory
+class CODAAPI ClientSocketFactory
 {
 public:
 
@@ -108,7 +108,7 @@ protected:
  *  This class creates TCP sockets only.
  */
 
-class TCPClientSocketFactory : public ClientSocketFactory
+class CODAAPI TCPClientSocketFactory : public ClientSocketFactory
 {
 public:
     TCPClientSocketFactory() : ClientSocketFactory(TCP_PROTO)
@@ -123,7 +123,7 @@ public:
  *  This class creates UDP sockets only.
  */
 
-class UDPClientSocketFactory : public ClientSocketFactory
+class CODAAPI UDPClientSocketFactory : public ClientSocketFactory
 {
 public:
     UDPClientSocketFactory() : ClientSocketFactory(UDP_PROTO)

@@ -53,4 +53,8 @@ void logging::DefaultLogger::setDefaultLogLevel(logging::LogLevel logLevel)
     logging::DefaultLogger::defaultLogLevel = logLevel;
 }
 
+logging::Handler* logging::DefaultLogger::getDefaultHandler()
+{
+    return mDefaultHandler;
+}
 

@@ -39,7 +39,7 @@ namespace sys
  *  This class defines the interface for any mutex in any package that
  *  is wrapped herein
  */
-class MutexInterface
+class CODAAPI MutexInterface
 {
 public:
     //!  Constructor

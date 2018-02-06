@@ -47,9 +47,9 @@ namespace sys
      *  Function returns a string identifier for the current
      *  thread.
      */
-    inline long getThreadID()
+    inline long CODAAPI getThreadID()
     {
-	return (long)pthread_self();
+        return (long)pthread_self();
     }
 
 /*!
@@ -59,7 +59,7 @@ namespace sys
  *  This class provides the wrapper for a pthread_t.  
  *
  */
-class ThreadPosix : public ThreadInterface
+class CODAAPI ThreadPosix : public ThreadInterface
 {
 
 public:

@@ -48,7 +48,7 @@ namespace lite
  * Use the Document to access the Element nodes contained within.
  * The DocumentParser will build a tree that you can use.
  */
-class Document
+class CODAAPI Document
 {
 public:
     //! Constructor

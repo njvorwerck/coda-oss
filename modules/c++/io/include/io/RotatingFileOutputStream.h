@@ -32,7 +32,7 @@ namespace io
 /**
  * An OutputStream that keeps track of the number of bytes written to the stream.
  */
-class RotatingFileOutputStream: public CountingOutputStream
+class CODAAPI RotatingFileOutputStream: public CountingOutputStream
 {
 public:
     RotatingFileOutputStream(const std::string& filename,

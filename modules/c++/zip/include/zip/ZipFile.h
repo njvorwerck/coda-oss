@@ -48,7 +48,7 @@ namespace zip
  *
  */
 
-class ZipFile
+class CODAAPI ZipFile
 {
 
     //!  This is the container for ZipEntry objects
@@ -156,7 +156,7 @@ public:
 /*!
  *  Output stream overload
  */
-std::ostream& operator<<(std::ostream& os, const zip::ZipFile& zf);
+std::ostream CODAAPI & operator<<(std::ostream& os, const zip::ZipFile& zf);
 
 #endif
 

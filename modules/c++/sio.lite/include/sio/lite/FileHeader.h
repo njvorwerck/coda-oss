@@ -37,7 +37,7 @@ namespace sio
 namespace lite
 {
 
-class FileHeader
+class CODAAPI FileHeader
 {
 public:
     /** Unsigned byte data */

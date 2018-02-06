@@ -194,7 +194,7 @@ namespace sys
      * On Intel systems, we are usually small-endian, and on
      * RISC architectures we are big-endian.
      */
-    bool isBigEndianSystem();
+    bool CODAAPI isBigEndianSystem();
 
 
    /*!
@@ -206,9 +206,9 @@ namespace sys
      *  \param elemSize
      *  \param numElems
      */
-    inline void byteSwap(void* buffer,
-                         unsigned short elemSize,
-                         size_t numElems)
+    inline void CODAAPI byteSwap(void* buffer,
+                                 unsigned short elemSize,
+                                 size_t numElems)
     {
         sys::byte* bufferPtr = static_cast<sys::byte*>(buffer);
         if (!bufferPtr || elemSize < 2 || !numElems)
@@ -239,10 +239,10 @@ namespace sys
      *  \param numElems
      *  \param[out] outputBuffer buffer to write swapped elements to
      */
-    inline void  byteSwap(const void* buffer,
-                          unsigned short elemSize,
-                          size_t numElems,
-                          void* outputBuffer)
+    inline void  CODAAPI byteSwap(const void* buffer,
+                                  unsigned short elemSize,
+                                  size_t numElems,
+                                  void* outputBuffer)
     {
         const sys::byte* bufferPtr = static_cast<const sys::byte*>(buffer);
         sys::byte* outputBufferPtr = static_cast<sys::byte*>(outputBuffer);
@@ -288,7 +288,7 @@ namespace sys
      *  \endcode
      *
      */
-    template <typename T> T byteSwap(T val)
+    template <typename T> T CODAAPI byteSwap(T val)
     {
         size_t size = sizeof(T);
         T out;
@@ -316,8 +316,8 @@ namespace sys
      *  \throw Exception if a bad allocation occurs
      *  \return a pointer to the data (this method never returns NULL)
      */
-    inline void* alignedAlloc(size_t size,
-                              size_t alignment = SSE_INSTRUCTION_ALIGNMENT)
+    inline void CODAAPI * alignedAlloc(size_t size,
+                                       size_t alignment = SSE_INSTRUCTION_ALIGNMENT)
     {
 #ifdef WIN32
         void* p = _aligned_malloc(size, alignment);
@@ -346,7 +346,7 @@ namespace sys
      *
      *  \param p A pointer to the data allocated using alignedAlloc
      */
-    inline void alignedFree(void* p)
+    inline void CODAAPI alignedFree(void* p)
     {
 #ifdef WIN32
         _aligned_free(p);

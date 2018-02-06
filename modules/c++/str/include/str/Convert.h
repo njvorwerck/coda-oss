@@ -39,8 +39,8 @@
 namespace str
 {
 
-template<typename T> int getPrecision(const T& type);
-template<typename T> int getPrecision(const std::complex<T>& type);
+template<typename T> int CODAAPI getPrecision(const T& type);
+template<typename T> int CODAAPI getPrecision(const std::complex<T>& type);
 
 template<typename T> std::string toString(const T& value)
 {
@@ -50,12 +50,12 @@ template<typename T> std::string toString(const T& value)
     return buf.str();
 }
 
-template<typename T> std::string toString(const T& real, const T& imag)
+template<typename T> CODAAPI std::string toString(const T& real, const T& imag)
 {
     return toString(std::complex<T>(real, imag));
 }
 
-template<typename T> T toType(const std::string& s)
+template<typename T> T CODAAPI toType(const std::string& s)
 {
     if (s.empty())
         throw except::BadCastException(except::Context(__FILE__, __LINE__,
@@ -78,17 +78,17 @@ template<typename T> T toType(const std::string& s)
     return value;
 }
 
-template<> bool toType<bool> (const std::string& s);
-template<> std::string toType<std::string> (const std::string& s);
+template<> bool CODAAPI toType<bool> (const std::string& s);
+template<> std::string CODAAPI toType<std::string> (const std::string& s);
 
 /**
  *  strtoll wrapper for msvc compatibility.
  */
-long long strtoll(const char *str, char **endptr, int base);
+long long CODAAPI strtoll(const char *str, char **endptr, int base);
 /**
  *  strtoull wrapper for msvc compatibility.
  */
-unsigned long long strtoull(const char *str, char **endptr, int base);
+unsigned long long CODAAPI strtoull(const char *str, char **endptr, int base);
 
 /**
  *  Convert a string containing a number in any base to a numerical type.
@@ -98,7 +98,7 @@ unsigned long long strtoull(const char *str, char **endptr, int base);
  *  @return a numberical representation of the number
  *  @throw BadCastException thrown if cast cannot be performed.
  */
-template<typename T> T toType(const std::string& s, int base)
+template<typename T> T CODAAPI toType(const std::string& s, int base)
 {
     char* end;
     errno = 0;
@@ -158,9 +158,9 @@ template<typename T> int getPrecision(const std::complex<T>& type)
     return getPrecision(type.real());
 }
 
-template<> int getPrecision(const float& type);
-template<> int getPrecision(const double& type);
-template<> int getPrecision(const long double& type);
+template<> int CODAAPI getPrecision(const float& type);
+template<> int CODAAPI getPrecision(const double& type);
+template<> int CODAAPI getPrecision(const long double& type);
 
 /** Generic casting routine; used by explicitly overloaded
  conversion operators.
@@ -171,7 +171,7 @@ template<> int getPrecision(const long double& type);
  @throw BadCastException thrown if cast cannot be performed.
  */
 template<typename T>
-T generic_cast(const std::string& value) throw (except::BadCastException)
+T CODAAPI generic_cast(const std::string& value) throw (except::BadCastException)
 {
     return str::toType<T>(value);
 }

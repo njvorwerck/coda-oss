@@ -26,6 +26,7 @@
 
 #include <stdarg.h>
 #include <string>
+#include <except/Context.h>
 
 namespace str
 {
@@ -34,9 +35,9 @@ namespace str
  *  \param format  The format
  *  \param ... Any printf like thing
  */
-std::string format(const char *format, ...);
+std::string CODAAPI format(const char *format, ...);
 
-class Format
+class CODAAPI Format
 {
 public:
     Format(const char* format, ...);

@@ -40,7 +40,7 @@ namespace sys
  *  simultaneous reads
  *
  */
-class ReadWriteMutex
+class CODAAPI ReadWriteMutex
 {
     public:
     //!  Constructor

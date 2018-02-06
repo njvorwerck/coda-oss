@@ -47,7 +47,7 @@ namespace sys
  *  The AbstractOS class defines the base for a system
  *  independent layer of function calls.
  */
-class AbstractOS
+class CODAAPI AbstractOS
 {
 public:
     AbstractOS();

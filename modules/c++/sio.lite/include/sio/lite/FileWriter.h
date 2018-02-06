@@ -43,7 +43,7 @@ namespace lite
  *  may be accessed directly.  Additionally, the writeSIO() routine provides
  *  simpler functionality
  */
-class FileWriter
+class CODAAPI FileWriter
 {
 public:
 
@@ -129,9 +129,9 @@ enum { AUTO = -1 };
  *
  *
  */
-template<typename T> void writeSIO(const T* image, size_t rows, size_t cols,
-                                   const std::string& imageFile,
-                                   int et = AUTO, int es = AUTO)
+template<typename T> void CODAAPI writeSIO(const T* image, size_t rows, size_t cols,
+                                           const std::string& imageFile,
+                                           int et = AUTO, int es = AUTO)
 {
 
     if (es == AUTO)

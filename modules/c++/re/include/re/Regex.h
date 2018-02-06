@@ -54,7 +54,7 @@ typedef std::vector<std::string> RegexMatch;
  *  documentation regarding the underlying PCRE library, especially for flag
  *  information, see http://www.pcre.org.
  */
-class Regex
+class CODAAPI Regex
 {
 public:
     /*!

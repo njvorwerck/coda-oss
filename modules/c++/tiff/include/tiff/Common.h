@@ -45,7 +45,7 @@ namespace tiff
  * statically so there is no need to create in instance of this class
  * to use the constants.
  *********************************************************************/
-class Const
+class CODAAPI Const
 {
 public:
     //! Default constructor
@@ -157,10 +157,7 @@ public:
      * @return
      *   The size of the specified TIFF type
      *****************************************************************/
-    static short sizeOf(unsigned short type)
-    {
-        return mTypeSizes[type];
-    }
+    static short sizeOf(unsigned short type);
 
 private:
     //! The array of sizes for each TIFF type.
@@ -175,7 +172,7 @@ private:
  * Most TIFF types will use this print strategy that simply converts
  * the data to a string.
  *********************************************************************/
-class PrintStrategy
+class CODAAPI PrintStrategy
 {
 public:
     //! Default constructor
@@ -217,7 +214,7 @@ public:
  * printable string.  It divides the numerator by the denominator
  * and returns the string form of the result.
  *******************************************************************/
-class RationalPrintStrategy
+class CODAAPI RationalPrintStrategy
 {
 public:
     //! Default Constructor
@@ -255,23 +252,7 @@ public:
  * @return
  *   the combined rational number
  *****************************************************************/
-sys::Uint64_T combine(sys::Uint32_T numerator, sys::Uint32_T denominator);
-
-/**
- *****************************************************************
- * Combines a numerator and a denominator into a single data
- * type.  The numerator is placed in the top 4 bytes, and the
- * denominator in the bottom 4 bytes of the returned unsigned
- * sys::Uint32_T.
- *
- * @param numerator
- *   the numerator
- * @param denominator
- *   the denominator
- * @return
- *   the combined rational number
- *****************************************************************/
-sys::Uint64_T combine(sys::Uint32_T numerator, sys::Uint32_T denominator);
+sys::Uint64_T CODAAPI combine(sys::Uint32_T numerator, sys::Uint32_T denominator);
 
 /**
  *****************************************************************
@@ -299,8 +280,8 @@ sys::Uint64_T combine(sys::Uint32_T numerator, sys::Uint32_T denominator);
  * @param denominator
  *   the returned denominator
  *****************************************************************/
-void split(sys::Uint64_T value, sys::Uint32_T &numerator,
-           sys::Uint32_T &denominator);
+void CODAAPI split(sys::Uint64_T value, sys::Uint32_T &numerator,
+                   sys::Uint32_T &denominator);
 
 } // End namespace tiff.
 

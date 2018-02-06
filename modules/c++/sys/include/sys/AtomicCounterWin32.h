@@ -29,7 +29,7 @@
 namespace sys
 {
 // Implemented from boost/smart_ptr/detail/atomic_count_win32.hpp
-class AtomicCounterImpl
+class CODAAPI AtomicCounterImpl
 {
 public:
     typedef long ValueType;

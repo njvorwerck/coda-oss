@@ -35,9 +35,9 @@
 namespace sys
 {
 
-    inline long getThreadID()
+    inline long CODAAPI getThreadID()
     {
-	return (long) PR_GetCurrentThread();
+        return (long) PR_GetCurrentThread();
     }
 
 
@@ -54,7 +54,7 @@ namespace sys
  *  just because pthreads or Caspr dont support them
  *
  */
-class ThreadNSPR : public ThreadInterface
+class CODAAPI ThreadNSPR : public ThreadInterface
 {
 public:
     /*!

@@ -74,7 +74,7 @@ DECLARE_EXTENDED_EXCEPTION(XMLNotSupported, xml::lite::XMLException)
  *  XML exception while processing documents
  *
  */
-class XMLParseException : public XMLException
+class CODAAPI XMLParseException : public XMLException
 {
 public:
     /*!

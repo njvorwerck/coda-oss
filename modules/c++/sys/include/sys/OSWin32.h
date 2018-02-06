@@ -46,7 +46,7 @@ namespace sys
  *  This class is the abstraction layer as defined for 
  *  the windows operating system.
  */
-class OSWin32 : public AbstractOS
+class CODAAPI OSWin32 : public AbstractOS
 {
 public:
     OSWin32()
@@ -220,7 +220,7 @@ protected:
 
 
 
-class DirectoryWin32 : public AbstractDirectory
+class CODAAPI DirectoryWin32 : public AbstractDirectory
 {
 public:
     DirectoryWin32() : mHandle(INVALID_HANDLE_VALUE)

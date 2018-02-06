@@ -24,6 +24,7 @@
 #define __MT_THREAD_PLANNER_H__
 
 #include <stddef.h>
+#include <except/Context.h>
 
 namespace mt
 {
@@ -31,7 +32,7 @@ namespace mt
  * \class ThreadPlanner
  * \brief Assists with dividing up work evenly between threads
  */
-class ThreadPlanner
+class CODAAPI ThreadPlanner
 {
 public:
     /*!

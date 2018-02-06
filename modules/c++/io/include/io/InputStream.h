@@ -51,7 +51,7 @@ namespace io
  * of large streams of bytes.
  *
  */
-class InputStream
+class CODAAPI InputStream
 {
 public:
     enum

@@ -38,7 +38,7 @@ namespace tiff
  * assume a specific size for the data, see tiff::Const for the size
  * of each TIFF type.
  *********************************************************************/
-class TypeFactory
+class CODAAPI TypeFactory
 {
 public:
     //! Default constructor

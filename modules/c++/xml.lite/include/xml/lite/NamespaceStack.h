@@ -70,7 +70,7 @@ typedef std::vector<NamespaceEntity> NamespaceEntityMap;
  *
  *
  */
-class NamespaceStack
+class CODAAPI NamespaceStack
 {
 public:
     NamespaceStack()

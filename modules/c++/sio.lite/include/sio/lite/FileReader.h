@@ -80,7 +80,7 @@ namespace lite
     \endcode
  */
 
-class FileReader : public StreamReader, public io::Seekable
+class CODAAPI FileReader : public StreamReader, public io::Seekable
 {
 
 

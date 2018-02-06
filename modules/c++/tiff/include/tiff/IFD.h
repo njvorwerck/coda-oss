@@ -45,7 +45,7 @@ namespace tiff
  * Contains functions for adding new entries to the IFD or adding
  * values to a specific IFD entry.
  *********************************************************************/
-class IFD : public io::Serializable
+class CODAAPI IFD : public io::Serializable
 {
 public:
     //! The IFDType

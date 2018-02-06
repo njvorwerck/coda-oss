@@ -49,7 +49,7 @@ namespace mt
  */
 
 template<typename T>
-class RequestQueue
+class CODAAPI RequestQueue
 {
 public:
 

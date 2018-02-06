@@ -49,7 +49,7 @@ namespace mt
  *
  */
 template <typename OpT>
-class BalancedRunnable1D : public sys::Runnable
+class CODAAPI BalancedRunnable1D : public sys::Runnable
 {
 public:
 

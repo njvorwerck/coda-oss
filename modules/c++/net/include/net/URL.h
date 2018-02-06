@@ -40,7 +40,7 @@ namespace net
 {
 
 
-class URLParams
+class CODAAPI URLParams
 {
 public:
     typedef std::list<std::string> ParamValues;
@@ -64,7 +64,7 @@ protected:
 };
 
 
-class URL
+class CODAAPI URL
 {
 public:
 

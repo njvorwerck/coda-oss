@@ -54,7 +54,7 @@ namespace lite
  *  the Expat C Parser underneath, and wiring it to
  *  generic event calls, via the content handler.
  */
-class XMLReaderXerces : public XMLReaderInterface
+class CODAAPI XMLReaderXerces : public XMLReaderInterface
 {
 
 private:

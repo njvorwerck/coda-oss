@@ -30,7 +30,7 @@
 
 namespace sys
 {
-class SemaphoreSolaris : public SemaphoreInterface
+class CODAAPI SemaphoreSolaris : public SemaphoreInterface
 {
 public:
     SemaphoreSolaris(unsigned int count = 0);

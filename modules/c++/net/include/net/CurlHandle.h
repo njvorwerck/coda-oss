@@ -35,7 +35,7 @@ namespace net
  *  \class CurlHandle
  *  \brief RAII warpper around CURL pointer
  */
-class CurlHandle
+class CODAAPI CurlHandle
 {
 public:
     /*

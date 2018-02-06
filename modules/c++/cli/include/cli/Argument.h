@@ -25,11 +25,12 @@
 
 #include <import/str.h>
 #include "cli/Value.h"
+#include <except/Context.h>
 
 namespace cli
 {
 
-enum Action
+enum CODAAPI Action
 {
     STORE, STORE_TRUE, STORE_FALSE, STORE_CONST, SUB_OPTIONS, VERSION
 };
@@ -42,7 +43,7 @@ class ArgumentParser;
  *
  * TODO: add support for case insensitive or standardizing choices/parsing
  */
-class Argument
+class CODAAPI Argument
 {
 public:
 

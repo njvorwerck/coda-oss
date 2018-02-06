@@ -52,17 +52,17 @@ namespace logging
  *  The default format looks like this:
  *  [%c] %p %d ==> %m
  */
-class StandardFormatter : public Formatter
+class CODAAPI StandardFormatter : public Formatter
 {
 public:
-    static const char DEFAULT_FORMAT[];
+    static const char* getDefaultFormat();
 
-    StandardFormatter() : Formatter(DEFAULT_FORMAT) {}
+    StandardFormatter();
     StandardFormatter(const std::string& fmt, 
                       const std::string& prologue = "",
                       const std::string& epilogue = "");
 
-    virtual ~StandardFormatter() {}
+    virtual ~StandardFormatter();
 
     virtual void format(const LogRecord* record, io::OutputStream& os) const;
 

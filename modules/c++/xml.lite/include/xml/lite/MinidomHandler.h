@@ -63,7 +63,7 @@ namespace lite
  * whether it is allocated externally or not.  DONT delete it 
  * explicitly unless you are looking for disaster.
  */
-class MinidomHandler : public ContentHandler
+class CODAAPI MinidomHandler : public ContentHandler
 {
 public:
     //! Constructor.  Uses default document

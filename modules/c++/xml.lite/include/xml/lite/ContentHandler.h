@@ -61,7 +61,7 @@ namespace lite
  *  which should increase performance and efficiency.
  */
 
-class ContentHandler
+class CODAAPI ContentHandler
 {
 public:
     //! Constructor

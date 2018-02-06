@@ -39,7 +39,7 @@ namespace logging
  * \class StreamHandler
  * \brief Emits LogRecords to an io::OutputStream
  */
-class StreamHandler : public Handler
+class CODAAPI StreamHandler : public Handler
 {
 public:
     //! Constructs a StreamHandler that uses an io::StandardOutStream

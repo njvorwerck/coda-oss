@@ -43,7 +43,7 @@ namespace except
  *
  * This class provides the base interface for exceptions and errors.
  */
-class Throwable
+class CODAAPI Throwable
 {
 public:
 

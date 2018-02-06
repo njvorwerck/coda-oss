@@ -24,12 +24,13 @@
 #define __MATH_CONSTANTS_H__
 
 #include <sys/sys_config.h>
+#include <except/Context.h>
 
 #ifdef __CODA_CPP11
 #include <math.h>
 namespace math
 {
-struct Constants
+struct CODAAPI Constants
 {
     static constexpr double FEET_TO_METERS = 0.3048;
     static constexpr double METERS_TO_FEET = 1.0 / FEET_TO_METERS;
@@ -51,7 +52,7 @@ struct Constants
 #else
 namespace math
 {
-struct Constants
+struct CODAAPI Constants
 {
     static const double FEET_TO_METERS;
     static const double METERS_TO_FEET;

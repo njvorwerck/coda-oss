@@ -45,9 +45,9 @@ namespace lite
  *  \param image Output for the data.
  */
 template <typename InputT>
-void readSIO(const std::string& pathname,
-             types::RowCol<size_t>& dims,
-             mem::ScopedArray<InputT>& image)
+void CODAAPI readSIO(const std::string& pathname,
+                     types::RowCol<size_t>& dims,
+                     mem::ScopedArray<InputT>& image)
 {
     sio::lite::FileReader reader(pathname);
     const sio::lite::FileHeader* const header(reader.getHeader());
@@ -74,9 +74,9 @@ void readSIO(const std::string& pathname,
  *  \param image Output for the data.
  */
 template <typename InputT>
-void readSIOVerifyDimensions(const std::string& pathname,
-                             const types::RowCol<size_t>& dims,
-                             mem::ScopedArray<InputT>& image)
+void CODAAPI readSIOVerifyDimensions(const std::string& pathname,
+                                     const types::RowCol<size_t>& dims,
+                                     mem::ScopedArray<InputT>& image)
 {
     types::RowCol<size_t> theseDims;
     readSIO<InputT>(pathname, theseDims, image);

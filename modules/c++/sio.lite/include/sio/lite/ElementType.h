@@ -31,42 +31,42 @@ namespace sio
 namespace lite
 {
 template <typename T>
-struct ElementType
+struct CODAAPI ElementType
 {
     static const size_t Type = sio::lite::FileHeader::UNSIGNED;
 };
 template <>
-struct ElementType<sys::Int8_T>
+struct CODAAPI ElementType<sys::Int8_T>
 {
     static const size_t Type = sio::lite::FileHeader::SIGNED;
 };
 template <>
-struct ElementType<sys::Int16_T>
+struct CODAAPI ElementType<sys::Int16_T>
 {
     static const size_t Type = sio::lite::FileHeader::SIGNED;
 };
 template <>
-struct ElementType<sys::Int32_T>
+struct CODAAPI ElementType<sys::Int32_T>
 {
     static const size_t Type = sio::lite::FileHeader::SIGNED;
 };
 template <>
-struct ElementType<sys::Int64_T>
+struct CODAAPI ElementType<sys::Int64_T>
 {
     static const size_t Type = sio::lite::FileHeader::SIGNED;
 };
 template <>
-struct ElementType<float>
+struct CODAAPI ElementType<float>
 {
     static const size_t Type = sio::lite::FileHeader::FLOAT;
 };
 template <>
-struct ElementType<double>
+struct CODAAPI ElementType<double>
 {
     static const size_t Type = sio::lite::FileHeader::FLOAT;
 };
 template <>
-struct ElementType<std::complex<float> >
+struct CODAAPI ElementType<std::complex<float> >
 {
     static const size_t Type = sio::lite::FileHeader::COMPLEX_FLOAT;
 };

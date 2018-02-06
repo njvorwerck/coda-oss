@@ -39,7 +39,7 @@ namespace ssl
      *  \class SSLException
      *  \brief Specialized exception for SSL
      */
-    class SSLException : public sys::SocketException
+    class CODAAPI SSLException : public sys::SocketException
     {
     public:
 	/*!

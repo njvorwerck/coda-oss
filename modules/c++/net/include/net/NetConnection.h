@@ -49,7 +49,7 @@ namespace net
  *  the SerializableConnection class, to avoid dealing with the byte
  *  transfer layer.
  */
-class NetConnection : public io::BidirectionalStream
+class CODAAPI NetConnection : public io::BidirectionalStream
 {
 public:
     /*!

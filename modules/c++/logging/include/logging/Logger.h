@@ -43,7 +43,7 @@ namespace logging
  * Instances of the Logger class represent a single logging channel.
  * A Logger instance can log to several Handlers.
  */
-class Logger : public Filterer
+class CODAAPI Logger : public Filterer
 {
 
 public:
@@ -51,10 +51,8 @@ public:
      * Constructs a Logger with an optional name
      * \param name  (optional) Name of the logger
      */
-    Logger(std::string name = "") :
-        mName(name)
-    {
-    }
+    Logger(std::string name = "");
+    
     virtual ~Logger();
 
     //! Logs a message at the specified LogLevel
@@ -116,15 +114,10 @@ public:
     void setLevel(LogLevel level);
 
     //! Sets the name of the Logger
-    void setName(const std::string& name)
-    {
-        mName = name;
-    }
+    void setName(const std::string& name);
+
     //! Returns the name of the Logger
-    std::string getName() const
-    {
-        return mName;
-    }
+    std::string getName() const;
 
     //! Removes all handlers
     void reset();

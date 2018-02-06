@@ -28,7 +28,7 @@
 
 namespace mt
 {
-class ThreadPoolException : public except::Exception
+class CODAAPI ThreadPoolException : public except::Exception
 {
 public:
     //! Default Constructor
@@ -62,8 +62,7 @@ public:
     //!  Destructor
     virtual ~ThreadPoolException()
     {}
-}
-;
+};
 }
 
 #endif

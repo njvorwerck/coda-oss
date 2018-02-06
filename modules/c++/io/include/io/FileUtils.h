@@ -40,16 +40,16 @@ namespace io
  *                     NOTE: This is a placeholder and is unused currently
  *  \return True upon success, false if failure
  */
-void copy(const std::string& path, 
-          const std::string& newPath,
-          size_t blockSize = 1048576);
+void CODAAPI copy(const std::string& path, 
+                  const std::string& newPath,
+                  size_t blockSize = 1048576);
 
 /*!
  *  Move file with this path name to the newPath
  *  \return True upon success, false if failure
  */
-inline void move(const std::string& path, 
-                 const std::string& newPath)
+inline void CODAAPI move(const std::string& path, 
+                         const std::string& newPath)
 {
     sys::OS os;
     if (os.move(path, newPath) == false)
@@ -66,7 +66,7 @@ inline void move(const std::string& path,
  *  Remove file with this path name
  *  \return True upon success, false if failure
  */
-inline void remove(const std::string& path)
+inline void CODAAPI remove(const std::string& path)
 {
     sys::OS os;
     os.remove(path);
@@ -76,7 +76,7 @@ inline void remove(const std::string& path)
 /**
  * Static file manipulation utilities.
  */
-class FileUtils
+class CODAAPI FileUtils
 {
 public:
     /**

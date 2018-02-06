@@ -38,7 +38,7 @@ int main(int argc, char** argv)
             return 1;
         }
 
-        std::cout << io::readFileContents(argv[1]) << std::endl;
+        std::cout << io::readFileContents(std::string(argv[1])) << std::endl;
     }
     catch (const std::exception& ex)
     {

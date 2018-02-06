@@ -44,7 +44,7 @@ namespace io
  *  Added capabilities allow it to send and receive information quickly
  *  and easily to any other stream-inheriting class.  
  */
-class StringStream : public SeekableBidirectionalStream
+class CODAAPI StringStream : public SeekableBidirectionalStream
 {
 public:
 

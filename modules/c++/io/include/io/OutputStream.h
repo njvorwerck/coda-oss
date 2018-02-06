@@ -44,7 +44,7 @@ namespace io
  *
  */
 
-class OutputStream
+class CODAAPI OutputStream
 {
 public:
     //! Default constructor

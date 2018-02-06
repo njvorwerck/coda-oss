@@ -44,7 +44,7 @@ namespace linear
  *  a single (2D) column vector represented as a matrix.
  *
  */
-template<typename _T=double> class Vector
+template<typename _T=double> class CODAAPI Vector
 {
     Matrix2D<_T> mRaw;
 public:
@@ -426,8 +426,8 @@ public:
  *  You should never ever use this, Vector's are
  *  MUCH slower than VectorN's
  */
-template<typename _T> Vector<_T> cross(const Vector<_T>& u,
-                                       const Vector<_T>& v)
+template<typename _T> Vector<_T> CODAAPI cross(const Vector<_T>& u,
+                                               const Vector<_T>& v)
 {
     Vector<_T> xp(3);
     xp[0] = (u[1]*v[2] - u[2]*v[1]);
@@ -437,7 +437,7 @@ template<typename _T> Vector<_T> cross(const Vector<_T>& u,
 }
 
 //!  Fairly non-useful method, retained for backwards compatibility
-template<typename _T> Vector<_T> 
+template<typename _T> Vector<_T> CODAAPI
     constantVector(size_t sz, _T cv = 0)
 {
     Vector<_T> v(sz, cv);
@@ -453,7 +453,7 @@ template<typename _T> Vector<_T>
  */
 
 template<typename _T> 
-    math::linear::Vector<_T>
+    math::linear::Vector<_T> CODAAPI
     operator*(const math::linear::Matrix2D<_T>& m, 
               const math::linear::Vector<_T>& v)
 {
@@ -463,7 +463,7 @@ template<typename _T>
 /*!
  *  Reverse order template overload for scalar * Vector
  */
-template<typename _T> math::linear::Vector<_T>
+template<typename _T> math::linear::Vector<_T> CODAAPI
     operator*(_T scalar, const math::linear::Vector<_T>& v)
 {
     return v * scalar;
@@ -474,7 +474,7 @@ template<typename _T> math::linear::Vector<_T>
  *  Pretty(?)-print vector
  */
 template<typename _T> 
-    std::ostream& operator<<(std::ostream& os,
+    std::ostream CODAAPI & operator<<(std::ostream& os,
                              const math::linear::Vector<_T>& v)
 {
     for (size_t i = 0; i < v.size(); ++i)

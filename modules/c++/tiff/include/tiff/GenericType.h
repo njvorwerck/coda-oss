@@ -36,7 +36,7 @@ namespace tiff
  * @class TypeInterface
  * @brief The interface class that all TIFF types inherit from.
  *********************************************************************/
-class TypeInterface : public io::Serializable
+class CODAAPI TypeInterface : public io::Serializable
 {
 public:
     //! Default constructor
@@ -88,7 +88,7 @@ public:
  * the data to a string for printing, and retrieving the data in
  * byte form.
  *********************************************************************/
-template <typename Data_T, typename Strategy_T = tiff::PrintStrategy> class GenericType :
+template <typename Data_T, typename Strategy_T = tiff::PrintStrategy> class CODAAPI GenericType :
     public TypeInterface
 {
 public:

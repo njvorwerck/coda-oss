@@ -42,7 +42,7 @@ namespace lite
  * This class is the LibXML schema validator
  * TODO: Implement this solution
  */
-class ValidatorLibXML : public ValidatorInterface
+class CODAAPI ValidatorLibXML : public ValidatorInterface
 {
 public:
 

@@ -24,12 +24,13 @@
 #define __MATH_LINEAR_LINE_2D_H__
 
 #include <types/RowCol.h>
+#include <except/Context.h>
 
 namespace math
 {
 namespace linear
 {
-class Line2D
+class CODAAPI Line2D
 {
 public:
     typedef types::RowCol<double> Point;

@@ -35,7 +35,7 @@
 namespace mt
 {
 template<typename RequestHandler_T>
-class BasicThreadPool
+class CODAAPI BasicThreadPool
 {
 public:
 

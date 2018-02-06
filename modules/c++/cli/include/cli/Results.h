@@ -25,11 +25,12 @@
 
 #include <map>
 #include "cli/Value.h"
+#include <except/Context.h>
 
 namespace cli
 {
 
-class Results
+class CODAAPI Results
 {
 protected:
     typedef std::map<std::string, cli::Value*> ValueStorage_T;

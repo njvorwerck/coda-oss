@@ -25,6 +25,7 @@
 #define __PLUGIN_DEFINES_H__
 
 #include <mem/SharedPtr.h>
+#include <except/Context.h>
 
 /* #define PLUGIN_CONSTRUCTOR_NAME "SpawnPlugin" */
 /* #define PLUGIN_DESTRUCTOR_NAME "DestroyPlugin" */
@@ -85,7 +86,7 @@
 
 namespace plugin
 {
-template<typename T> class PluginIdentity
+template<typename T> class CODAAPI PluginIdentity
 {
 public:
     PluginIdentity() {}

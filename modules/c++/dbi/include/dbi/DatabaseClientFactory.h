@@ -24,6 +24,7 @@
 #define __DBI_DATABASE_CLIENT_FACTORY_H__
 
 #include "dbi/DatabaseConnection.h"
+#include <except/Context.h>
 
 /*!
  * \file DatabaseClientFactory.h
@@ -33,7 +34,7 @@
 
 namespace dbi
 {
-enum DatabaseType
+enum CODAAPI DatabaseType
 {
     PGSQL = 0,
     MYSQL = 1,
@@ -45,7 +46,7 @@ enum DatabaseType
  * \brief Database-independent client object
  * 
  */
-class DatabaseClientFactory
+class CODAAPI DatabaseClientFactory
 {
 public:
 

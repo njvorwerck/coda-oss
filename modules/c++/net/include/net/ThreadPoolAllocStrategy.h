@@ -24,7 +24,7 @@ namespace net
  *  Also note that, since we are in a server, we will never shut down
  *
  */
-class ConnectionThread: public mt::WorkerThread<NetConnection*>
+class CODAAPI ConnectionThread: public mt::WorkerThread<NetConnection*>
 {
     RequestHandler* mHandler;
 public:
@@ -62,7 +62,7 @@ public:
  *  and the RequestHandler implementations are a nod to this,
  *  recognizing that all resources are safe within this thread
  */
-class ConnectionThreadPool: public mt::AbstractThreadPool<net::NetConnection*>
+class CODAAPI ConnectionThreadPool: public mt::AbstractThreadPool<net::NetConnection*>
 {
     RequestHandlerFactory* mFactory;
 
@@ -112,7 +112,7 @@ public:
  *  picks it up from the queue and hands it to its RequestHandler
  *
  */
-class ThreadPoolAllocStrategy: public AllocStrategy
+class CODAAPI ThreadPoolAllocStrategy: public AllocStrategy
 {
 
     ConnectionThreadPool* mPool;

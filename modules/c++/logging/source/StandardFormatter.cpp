@@ -30,14 +30,21 @@
 #include <import/str.h>
 #include "logging/StandardFormatter.h"
 
-using namespace logging;
+namespace logging
+{
+const char* StandardFormatter::getDefaultFormat() 
+{
+    return "[%c] %p [%t] %d ==> %m";
+} 
 
-const char StandardFormatter::DEFAULT_FORMAT[] = "[%c] %p [%t] %d ==> %m";
+StandardFormatter::StandardFormatter() : Formatter(getDefaultFormat()) {}
+
+StandardFormatter::~StandardFormatter() {}
 
 StandardFormatter::StandardFormatter(const std::string& fmt, 
                                      const std::string& prologue,
                                      const std::string& epilogue) :
-    Formatter((fmt.empty()) ? DEFAULT_FORMAT : fmt, prologue, epilogue)
+    Formatter((fmt.empty()) ? getDefaultFormat() : fmt, prologue, epilogue)
 {
 }
 
@@ -69,4 +76,4 @@ void StandardFormatter::format(const LogRecord* record, io::OutputStream& os) co
     // write to stream
     os.write(format + "\n");
 }
-
+}

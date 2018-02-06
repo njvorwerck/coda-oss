@@ -49,7 +49,7 @@ namespace lite
  * \brief This is the information for one 
  *        schema validation error.
  */
-class ValidationInfo
+class CODAAPI ValidationInfo
 {
 public:
     ValidationInfo(const std::string& message,
@@ -90,7 +90,7 @@ private:
  *
  * This class is the interface for schema validators
  */
-class ValidatorInterface
+class CODAAPI ValidatorInterface
 {
 public:
 
@@ -163,7 +163,7 @@ public:
 }
 }
 
-inline std::ostream& operator<< (
+inline std::ostream CODAAPI & operator<< (
     std::ostream& out, 
     const xml::lite::ValidationInfo& info)
 {

@@ -42,7 +42,7 @@ namespace tiff
  * to access a specific image within the file, and to read data from
  * a specific image in the file.
  *********************************************************************/
-class FileReader
+class CODAAPI FileReader
 {
 public:
 

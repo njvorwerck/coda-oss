@@ -87,7 +87,7 @@ namespace lite
     \endcode
  *
  */
-class StreamReader : public io::InputStream
+class CODAAPI StreamReader : public io::InputStream
 {
 public:
     /** Constructor */

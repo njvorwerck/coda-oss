@@ -49,7 +49,7 @@ namespace lite
  * This class stores all of the element information about an XML
  * document.
  */
-class Element
+class CODAAPI Element
 {
 public:
     //! Default constructor

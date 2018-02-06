@@ -54,7 +54,7 @@ class Vector;
  *
  */
 template <typename _T=double>
-class Matrix2D
+class CODAAPI Matrix2D
 {
     friend class Vector<_T>;
 
@@ -1132,7 +1132,7 @@ public:
  *  \param N the dimension in rows and in cols for the matrix to be produced
  *
  */
-template<typename _T> Matrix2D<_T>
+template<typename _T> Matrix2D<_T> CODAAPI
     identityMatrix(size_t N)
 {
     Matrix2D<_T> mx(N, N);
@@ -1146,7 +1146,7 @@ template<typename _T> Matrix2D<_T>
     return mx;
 }
 
-template<typename _T, typename Vector_T > Matrix2D<_T>
+template<typename _T, typename Vector_T > Matrix2D<_T> CODAAPI
     diagonalMatrix(const Vector_T& diag)
 {
     size_t N = diag.size();
@@ -1164,10 +1164,10 @@ template<typename _T, typename Vector_T > Matrix2D<_T>
  *  Method based on TNT
  *
  */
-template<typename _T>
-    math::linear::Matrix2D<_T> solveLU(const std::vector<size_t>& pivotsM,
-                                       const Matrix2D<_T> &lu,
-                                       const Matrix2D<_T> &b)
+template<typename _T> math::linear::Matrix2D<_T> CODAAPI 
+    solveLU(const std::vector<size_t>& pivotsM,
+            const Matrix2D<_T> &lu,
+            const Matrix2D<_T> &b)
 {
 
 
@@ -1212,7 +1212,8 @@ template<typename _T>
  *  this for 2x2s
  *
  */
-template<typename _T> inline Matrix2D<_T> inverse2x2(const Matrix2D<_T>& mx)
+template<typename _T> inline Matrix2D<_T> CODAAPI
+    inverse2x2(const Matrix2D<_T>& mx)
 {
     const double determinant = mx(1,1) * mx(0,0) - mx(1,0)*mx(0,1);
 
@@ -1238,7 +1239,7 @@ template<typename _T> inline Matrix2D<_T> inverse2x2(const Matrix2D<_T>& mx)
  *  this for 3x3s
  *
  */
-template<typename _T> inline Matrix2D<_T>
+template<typename _T> inline Matrix2D<_T> CODAAPI
     inverse3x3(const Matrix2D<_T>& mx)
 {
     double a = mx(0,0);
@@ -1286,7 +1287,7 @@ template<typename _T> inline Matrix2D<_T>
  *
  */
 template<typename _T> inline
-    Matrix2D<_T> inverseLU(const Matrix2D<_T>& mx)
+    Matrix2D<_T> CODAAPI inverseLU(const Matrix2D<_T>& mx)
 {
     size_t M = mx.rows();
     size_t N = mx.cols();
@@ -1319,7 +1320,7 @@ template<typename _T> inline
  *  \endcode
  */
 template<typename _T> inline
-    Matrix2D<_T> inverse(const Matrix2D<_T>& mx)
+    Matrix2D<_T> CODAAPI inverse(const Matrix2D<_T>& mx)
 {
     // Try to speed this up
     if (mx.rows() != mx.cols())
@@ -1340,8 +1341,8 @@ template<typename _T> inline
  * \return Left inverse
  * \throws if matrix is not left-invertible
  */
-template<typename _T> inline
-    Matrix2D<_T> leftInverse(const Matrix2D<_T>& mx)
+template<typename _T> inline 
+    Matrix2D<_T> CODAAPI leftInverse(const Matrix2D<_T>& mx)
 {
     return inverse(mx.transpose() * mx) * mx.transpose();
 }
@@ -1354,14 +1355,14 @@ template<typename _T> inline
  * \throws if matrix is not right-invertible
  */
 template<typename _T> inline
-    Matrix2D<_T> rightInverse(const Matrix2D<_T>& mx)
+    Matrix2D<_T> CODAAPI rightInverse(const Matrix2D<_T>& mx)
 {
     return mx.transpose() * inverse(mx * mx.transpose());
 }
 }
 }
 
-template<typename _T> math::linear::Matrix2D<_T>
+template<typename _T> math::linear::Matrix2D<_T> CODAAPI
     operator*(_T scalar, const math::linear::Matrix2D<_T>& m)
 {
     return m.multiply(scalar);
@@ -1372,7 +1373,7 @@ template<typename _T> math::linear::Matrix2D<_T>
  *  \return Reference to ostream
  */
 template<typename _T>
-    std::ostream& operator<<(std::ostream& os,
+    std::ostream CODAAPI & operator<<(std::ostream& os,
                              const math::linear::Matrix2D<_T>& m)
 {
 

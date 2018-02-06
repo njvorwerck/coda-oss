@@ -32,7 +32,7 @@ namespace zip
  *  \brief IO wrapper for zlib API
  *
  */
-class GZipOutputStream: public io::OutputStream
+class CODAAPI GZipOutputStream: public io::OutputStream
 {
     gzFile mFile;
 public:

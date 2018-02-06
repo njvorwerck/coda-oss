@@ -38,7 +38,7 @@ namespace io
  *  \class BidirectionalStream
  *  \brief Provides a input/output stream as one class.
  */
-struct BidirectionalStream: public InputStream, public OutputStream
+struct CODAAPI BidirectionalStream: public InputStream, public OutputStream
 {
 };
 

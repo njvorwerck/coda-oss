@@ -29,6 +29,7 @@
 #include <typeinfo>
 #include <iostream>
 #include "sys/SystemException.h"
+#include <except/Context.h>
 
 
 namespace sys
@@ -68,7 +69,7 @@ namespace sys
  *
  */
 
-class ThreadInterface : public Runnable
+class CODAAPI ThreadInterface : public Runnable
 {
 public:
     enum { DEFAULT_LEVEL, KERNEL_LEVEL, USER_LEVEL };

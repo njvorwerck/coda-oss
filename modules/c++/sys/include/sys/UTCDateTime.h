@@ -32,7 +32,7 @@ namespace sys
 /*!
  *  Representation of a UTC date/time structure.
  */
-class UTCDateTime : public DateTime
+class CODAAPI UTCDateTime : public DateTime
 {
 protected:
     /**
@@ -44,7 +44,7 @@ protected:
     virtual void getTime(time_t numSecondsSinceEpoch, tm& t) const;
 
 public:
-    static const char DEFAULT_DATETIME_FORMAT[];
+    static const char* getDefaultDateTimeFormat();
 
     /*!
      *  Construct as current date and time (UTC).
@@ -68,11 +68,13 @@ public:
      *  Construct with time in milliseconds.
      */
     UTCDateTime(double timeInMillis);
+    
     /*!
      *  Construct with string/format.
      */
+     // TODO: Leak?
     UTCDateTime(const std::string& time,
-            const std::string& format = DEFAULT_DATETIME_FORMAT);
+            const std::string& format = getDefaultDateTimeFormat());
 
     // unhide in the base class format method
     using DateTime::format;
@@ -88,7 +90,7 @@ public:
 
 }
 
-std::ostream& operator<<(std::ostream& os, const sys::UTCDateTime& dateTime);
-std::istream& operator>>(std::istream& is, sys::UTCDateTime& dateTime);
+std::ostream CODAAPI & operator<<(std::ostream& os, const sys::UTCDateTime& dateTime);
+std::istream CODAAPI & operator>>(std::istream& is, sys::UTCDateTime& dateTime);
 
 #endif//__SYS_UTC_DATE_TIME_H__

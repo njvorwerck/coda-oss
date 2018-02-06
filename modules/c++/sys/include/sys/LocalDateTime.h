@@ -32,8 +32,11 @@ namespace sys
 /*!
  *  Representation of a local date/time structure.
  */
-class LocalDateTime : public DateTime
+class CODAAPI LocalDateTime : public DateTime
 {
+private:
+    //static const char DEFAULT_DATETIME_FORMAT[];
+    
 protected:
     int mDST;
 
@@ -47,10 +50,11 @@ protected:
 
     // ! Given seconds since the epoch, provides the local time
     virtual void getTime(time_t numSecondsSinceEpoch, tm& t) const;
-
+    
 public:
-    static const char DEFAULT_DATETIME_FORMAT[];
-
+    
+    static const char* getDefaultDatetimeFormat();
+    
     /*!
      *  Construct as current date and time (localtime).
      */
@@ -76,7 +80,7 @@ public:
      *  Construct with string/format.
      */
     LocalDateTime(const std::string& time,
-            const std::string& format = DEFAULT_DATETIME_FORMAT);
+            const std::string& format = getDefaultDatetimeFormat());
 
     //! Return the Daylight Savings Time flag (true = on, false = off)
     bool getDST() const { return mDST == 1; }
@@ -94,10 +98,9 @@ public:
      */
     std::string format() const;
 };
-
+std::ostream CODAAPI & operator<<(std::ostream& os, const LocalDateTime& dateTime);
+std::istream CODAAPI & operator>>(std::istream& is, LocalDateTime& dateTime);
 }
 
-std::ostream& operator<<(std::ostream& os, const sys::LocalDateTime& dateTime);
-std::istream& operator>>(std::istream& is, sys::LocalDateTime& dateTime);
 
 #endif//__SYS_LOCAL_DATE_TIME_H__

@@ -37,7 +37,7 @@ namespace logging
  * \class NullHandler
  * \brief Ignores all records
  */
-class NullHandler : public Handler
+class CODAAPI NullHandler : public Handler
 {
 
 public:
@@ -65,7 +65,7 @@ protected:
  * A Logger that doesn't actually log anything. It can be used in cases where
  * a Logger is required but you don't want anything to log.
  */
-class NullLogger : public Logger
+class CODAAPI NullLogger : public Logger
 {
 public:
     NullLogger(const std::string& name = "") :

@@ -49,7 +49,7 @@ namespace io
  *
  */
 
-class DbgStream : public OutputStream
+class CODAAPI DbgStream : public OutputStream
 {
 public:
     //!  Constructor

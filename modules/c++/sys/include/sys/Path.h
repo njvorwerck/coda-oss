@@ -38,7 +38,7 @@
 namespace sys
 {
 
-class Path
+class CODAAPI Path
 {
 public:
     Path();
@@ -275,7 +275,7 @@ protected:
 
 }
 
-std::ostream& operator<<(std::ostream& os, const sys::Path& path);
-std::istream& operator>>(std::istream& os, sys::Path& path);
+std::ostream CODAAPI& operator<<(std::ostream& os, const sys::Path& path);
+std::istream CODAAPI& operator>>(std::istream& os, sys::Path& path);
 
 #endif

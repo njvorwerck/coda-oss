@@ -52,7 +52,7 @@ namespace lite
  * bloat of the spec.  It was inspired by python's xml.dom.minidom
  * module.
  */
-class MinidomParser
+class CODAAPI MinidomParser
 {
 public:
     /*!

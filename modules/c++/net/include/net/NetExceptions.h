@@ -41,7 +41,7 @@ namespace net
  *  poorly formed URLs.  The URL is usually the input, and the
  *  message currently is auto-constructed
  */
-class MalformedURLException : public except::Exception
+class CODAAPI MalformedURLException : public except::Exception
 {
 public:
     /*!

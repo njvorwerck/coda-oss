@@ -58,7 +58,7 @@ namespace sys
  *
  *  TODO: Provide other operations such as getThenSet() and compareThenSet().
  */
-class AtomicCounter
+class CODAAPI AtomicCounter
 {
 public:
     typedef AtomicCounterImpl::ValueType ValueType;

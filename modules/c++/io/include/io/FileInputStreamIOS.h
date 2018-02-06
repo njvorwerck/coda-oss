@@ -52,7 +52,7 @@ namespace io
  *  method is based on the pos in the file, and the streamTo() and read()
  *  are file operations
  */
-class FileInputStreamIOS : public SeekableInputStream
+class CODAAPI FileInputStreamIOS : public SeekableInputStream
 {
 public:
     //!  Constructor

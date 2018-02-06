@@ -28,7 +28,7 @@
 
 namespace mt
 {
-    class CPUAffinityInitializer
+    class CODAAPI CPUAffinityInitializer
     {
     public:
 	CPUAffinityInitializer() {}

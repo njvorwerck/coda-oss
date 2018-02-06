@@ -41,7 +41,7 @@ namespace logging
  * A base class for loggers and handlers which allows them to share
  * common code.
  */
-class Filterer
+class CODAAPI Filterer
 {
 public:
     Filterer(){}

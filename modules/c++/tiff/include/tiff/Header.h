@@ -34,7 +34,7 @@ namespace tiff
  * @class Header
  * @brief Contains TIFF header information
  *********************************************************************/
-class Header : public io::Serializable
+class CODAAPI Header : public io::Serializable
 {
 public:
     enum ByteOrder { MM, II };

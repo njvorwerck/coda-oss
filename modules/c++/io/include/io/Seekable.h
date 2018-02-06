@@ -40,7 +40,7 @@
 
 namespace io
 {
-class Seekable
+class CODAAPI Seekable
 {
 public:
     Seekable()

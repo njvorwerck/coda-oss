@@ -29,7 +29,7 @@ namespace sio
 {
 namespace lite
 {
-class UnsupportedDataTypeException : public except::Exception
+class CODAAPI UnsupportedDataTypeException : public except::Exception
 {
 public:
     //!  Default constructor

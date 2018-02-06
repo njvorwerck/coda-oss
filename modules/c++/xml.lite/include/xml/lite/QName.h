@@ -39,6 +39,7 @@
  */
 
 #include <string>
+#include <except/Context.h>
 
 namespace xml
 {
@@ -61,7 +62,7 @@ namespace lite
  *  to a namespace URI 
  */
 
-class QName
+class CODAAPI QName
 {
 public:
     //! Default constructor

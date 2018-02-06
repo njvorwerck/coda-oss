@@ -80,7 +80,7 @@ namespace plugin
  *  3) a worker class that inherits an interface which performs
  *  the tasks required of the plugin
  */
-template<typename T> class BasicPluginManager
+template<typename T> class CODAAPI BasicPluginManager
 {
 public:
     typedef mem::SharedPtr<PluginIdentity<T> > SharedPluginIdentity;
